@@ -1,7 +1,7 @@
 /* General Styles */
 body {
   font-family:
-    "Geist
+    "Geist",
     "JetBrains Mono",
     system-ui,
     -apple-system,
@@ -15,31 +15,31 @@ body {
 }
 
 h1 {
-  font-size: 22px;
+  font-size: 26px;
 }
 
 h2 {
-  font-size: 20px;
+  font-size: 24px;
 }
 
 h3 {
-  font-size: 18px;
+  font-size: 22px;
 }
 
 h4 {
-  font-size: 16px;
+  font-size: 20px;
 }
 
 h5 {
-  font-size: 14px;
+  font-size: 18px;
 }
 
 h6 {
-  font-size: 12px;
+  font-size: 16px;
 }
 
 p {
-  font-size: 8px;
+  font-size: 14px;
 }
 
 a {
@@ -67,11 +67,47 @@ a:hover {
 
 /* Header */
 header {
+  display: grid;
+  grid-template-columns: auto auto 1fr;
+  grid-gap: 20px;
+  align-items: start;
+  margin: 0 auto;
+  max-width: 60rem;
+  width: 90%;
+  padding: 20px 0 50px;
+}
+
+.header-image img {
+  box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+  width: 300px;
+  height: 400px;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+.header-title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+.header-title h1 {
+  writing-mode: vertical-rl;
+  text-orientation: upright;
+  font-size: 14px;
+  font-weight: 900;
+  height: 400px;
+}
+
+.header-info {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  padding: 20px;
-  text-align: center;
+  justify-content: center;
+}
+
+.header-info p:first-child {
+  font-weight: bold;
+  margin-bottom: 10px;
 }
 
 /* Footer */
@@ -85,7 +121,7 @@ footer {
 
 footer .social-links {
   display: flex;
-  gap: 20px;
+  gap: 30px;
   justify-content: center;
 }
 
@@ -104,7 +140,7 @@ nav {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 1rem;
+  gap: 2rem;
   margin-top: 3px;
   padding: 10px 0;
   color: #121212;
@@ -147,20 +183,20 @@ main {
 
 /* Projects Section */
 .projects {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  row-gap: 40px;
+  column-gap: 20px;
 }
 
 .project-item {
-  flex: 0 1 calc(33.33% - 13.33px);
-  max-width: calc(33.33% - 13.33px);
+  display: contents;
 }
 
 .desc-project {
   opacity: 0.8;
+  overflow-y: auto;
+  padding-right: 5px;
 }
 
 .techs {
@@ -168,6 +204,7 @@ main {
   flex-wrap: wrap;
   justify-content: left;
   gap: 10px;
+  align-self: end;
 }
 
 .tech-item {
@@ -184,10 +221,33 @@ main {
   border: 1px solid #121212;
   border-radius: 5px;
   padding: 10px;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  height: 100%;
+}
+
+.card h5 {
+  margin-top: 0;
 }
 
 /* Responsive Design */
 @media (max-width: 768px) {
+  header {
+    grid-template-columns: auto 1fr;
+    grid-gap: 10px;
+    padding: 10px 0 30px;
+  }
+
+  .header-image img {
+    width: 150px;
+    height: 200px;
+  }
+
+  .header-title h1 {
+    font-size: 12px;
+    height: 200px;
+  }
+
   body {
     padding-top: 30px;
   }
@@ -196,9 +256,8 @@ main {
     width: 95%;
   }
 
-  .project-item {
-    flex: 0 1 100%;
-    max-width: 100%;
+  .projects {
+    grid-template-columns: 1fr;
   }
 
   .skills {
@@ -211,24 +270,46 @@ main {
 }
 
 @media (max-width: 480px) {
+  header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
+  }
+
+  .header-image img {
+    width: 100px;
+    height: 100px;
+  }
+
+  .header-title {
+    flex-direction: column;
+  }
+
+  .header-title h1 {
+    writing-mode: horizontal-tb;
+    font-size: 16px;
+    height: auto;
+  }
+
+  .header-info {
+    align-items: center;
+  }
   body {
     font-size: 14px;
   }
 
-  header {
-    padding: 10px;
-  }
-
-  nav {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  nav a {
-    width: 100%;
-    text-align: center;
-    padding: 10px 0;
-  }
+  /* nav { */
+  /*   flex-direction: column; */
+  /*   align-items: center; */
+  /* } */
+  /**/
+  /* nav a { */
+  /*   width: 100%; */
+  /*   text-align: center; */
+  /*   padding: 10px 0; */
+  /* } */
 
   .skill-item {
     font-size: 10px;
