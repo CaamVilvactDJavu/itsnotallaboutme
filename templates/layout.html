@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{{ title }}</title>
+    <link rel="stylesheet" href="/static/styles/globals.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/brands.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/fontawesome.min.css"
+    />
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    {{ header }} {{ navigation }}
+    <div class="container">
+      <main id="content">{{ content }}</main>
+    </div>
+    {{ footer }}
+    <script>
+      document.querySelectorAll("a[data-page]").forEach((link) => {
+        link.addEventListener("click", async (e) => {
+          e.preventDefault();
+          const page = link.getAttribute("data-page");
+          const response = await fetch(`/?page=${page}`);
+          const content = await response.text();
+          const parser = new DOMParser();
+          const doc = parser.parseFromString(content, "text/html");
+          document.getElementById("content").innerHTML =
+            doc.getElementById("content").innerHTML;
+        });
+      });
+    </script>
+  </body>
+</html>
