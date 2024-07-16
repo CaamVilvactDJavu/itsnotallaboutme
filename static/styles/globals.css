@@ -1,9 +1,13 @@
 /* General Styles */
-* {
-  font-family: "Geist", "JetBrains Mono";
+@font-face {
+  font-family: "GeistMono";
+  src: url("../fonts/GeistMono-Regular.woff") format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 
 body {
+  font-family: "GeistMono";
   background: #c6b084;
   color: #121212;
   margin: 0;
