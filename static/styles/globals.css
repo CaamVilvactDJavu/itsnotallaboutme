@@ -1,11 +1,9 @@
 /* General Styles */
+* {
+  font-family: "Geist", "JetBrains Mono";
+}
+
 body {
-  font-family:
-    "Geist",
-    "JetBrains Mono",
-    system-ui,
-    -apple-system,
-    sans-serif;
   background: #c6b084;
   color: #121212;
   margin: 0;
