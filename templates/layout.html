@@ -35,6 +35,9 @@
           const doc = parser.parseFromString(content, "text/html");
           document.getElementById("content").innerHTML =
             doc.getElementById("content").innerHTML;
+          doc.querySelectorAll("script").forEach(script => {
+        eval(script.textContent);
+      });
         });
       });
     </script>

@@ -1,2 +1,36 @@
-<h1>Welcome to the Note Page</h1>
-<p>This is the note page content.</p>
+<div class="notes-container">
+  <a href="#" data-page="new_note" class="new-note-btn">New Note</a>
+  <div id="notes-list">
+    <!-- Notes will be dynamically inserted here -->
+  </div>
+</div>
+
+<script>
+  function loadNotes() {
+    fetch("/api/notes")
+      .then((response) => response.json())
+      .then((notes) => {
+        const notesList = document.getElementById("notes-list");
+        notesList.innerHTML = notes
+          .map(
+            (note) => `
+          <div class="note-card" data-id="${note.id}">
+            <h3>${note.title}</h3>
+            <p>${note.content.substring(0, 100)}...</p>
+          </div>
+        `,
+          )
+          .join("");
+
+        // Add click event listeners to note cards
+        document.querySelectorAll(".note-card").forEach((card) => {
+          card.addEventListener("click", () => {
+            const noteId = card.getAttribute("data-id");
+            window.location.href = `/?page=note&id=${noteId}`;
+          });
+        });
+      });
+  }
+
+  loadNotes();
+</script>

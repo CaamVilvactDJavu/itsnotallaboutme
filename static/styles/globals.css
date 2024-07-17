@@ -58,9 +58,7 @@ a:hover {
 }
 
 ::selection {
-  user-select: none;
-  -webkit-user-select: none;
-  -ms-user-select: none;
+  background: #b0a17b;
 }
 
 .warning {
@@ -102,6 +100,9 @@ header {
 }
 
 .header-info {
+  border: 1px dashed #121212;
+  border-radius: 5px;
+  padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -198,7 +199,7 @@ main {
 .desc-project {
   opacity: 0.8;
   overflow-y: auto;
-  padding-right: 5px;
+  text-align: justify;
 }
 
 .techs {
@@ -220,7 +221,7 @@ main {
 }
 
 .card {
-  border: 1px solid #121212;
+  border: 1px dashed #121212;
   border-radius: 5px;
   padding: 10px;
   display: grid;
@@ -235,19 +236,30 @@ main {
 /* Responsive Design */
 @media (max-width: 768px) {
   header {
-    grid-template-columns: auto 1fr;
-    grid-gap: 10px;
-    padding: 10px 0 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 10px;
   }
 
   .header-image img {
-    width: 150px;
-    height: 200px;
+    width: 430px;
+    height: 300px;
+  }
+
+  .header-title {
+    flex-direction: column;
   }
 
   .header-title h1 {
-    font-size: 12px;
-    height: 200px;
+    writing-mode: horizontal-tb;
+    font-size: 16px;
+    height: auto;
+  }
+
+  .header-info {
+    align-items: center;
   }
 
   body {
@@ -281,8 +293,8 @@ main {
   }
 
   .header-image img {
-    width: 100px;
-    height: 100px;
+    width: 350px;
+    height: 200px;
   }
 
   .header-title {
@@ -298,6 +310,7 @@ main {
   .header-info {
     align-items: center;
   }
+
   body {
     font-size: 14px;
   }
