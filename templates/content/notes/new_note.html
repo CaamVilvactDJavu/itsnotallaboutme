@@ -31,23 +31,30 @@
       const title = document.getElementById("note-title").value;
       const content = document.getElementById("note-content").value;
 
-      const response = await fetch("/api/notes", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          id: Date.now().toString(),
-          title,
-          content: `# ${title}\n\n${content}`,
-        }),
-      });
+      try {
+        const response = await fetch("/api/notes", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            id: Date.now().toString(),
+            title,
+            content: `# ${title}\n\n${content}`,
+          }),
+        });
 
-      if (response.ok) {
-        alert("Note saved successfully!");
-        window.location.href = "/?page=notes";
-      } else {
-        alert("Failed to save note. Please try again.");
+        if (response.ok) {
+          alert("Note saved successfully!");
+          window.location.href = "/?page=notes";
+        } else {
+          const errorText = await response.text();
+          console.error("Failed to save note:", errorText);
+          alert("Failed to save note. Please try again.");
+        }
+      } catch (error) {
+        console.error("Error saving note:", error);
+        alert("Error saving note. Please try again.");
       }
     });
 </script>
