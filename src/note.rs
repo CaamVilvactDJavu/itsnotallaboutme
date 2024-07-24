@@ -21,8 +21,10 @@ pub async fn note_content(id: String, state: Arc<AppState>) -> String {
     let content: serde_json::Value = response.json().await.expect("Failed to parse JSON");
 
     if let Some(content) = content.get("content").and_then(|c| c.as_str()) {
+        // Ensure that base64 content is properly formatted
+        let base64_content = content.replace('\n', "");
         let markdown_content =
-            String::from_utf8(base64::decode(content).expect("Failed to decode base64"))
+            String::from_utf8(base64::decode(&base64_content).expect("Failed to decode base64"))
                 .expect("Failed to convert to UTF-8");
         let parser = Parser::new(&markdown_content);
         let mut html_output = String::new();

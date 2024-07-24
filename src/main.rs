@@ -45,10 +45,14 @@ async fn get_notes(State(state): State<Arc<AppState>>) -> Json<Vec<Note>> {
     let content: serde_json::Value = response.json().await.expect("Failed to parse JSON");
 
     if let Some(content) = content.get("content").and_then(|c| c.as_str()) {
-        let decoded = base64::decode(content).expect("Failed to decode base64");
+        // Ensure that base64 content is properly formatted
+        let base64_content = content.replace('\n', "");
+        let decoded = base64::decode(&base64_content).expect("Failed to decode base64");
+
         let notes: Vec<Note> = serde_json::from_slice(&decoded).expect("Failed to parse notes");
         Json(notes)
     } else {
+        eprintln!("Content field not found in response: {:?}", content);
         Json(vec![]) // Return an empty list if content is not found
     }
 }
@@ -61,120 +65,127 @@ async fn save_note(State(state): State<Arc<AppState>>, Json(new_note): Json<Note
 
     println!("Fetching from URL: {}", url);
 
-    let response = match state
+    let response = state
         .client
         .get(&url)
         .header("Authorization", format!("token {}", state.github_token))
         .header("User-Agent", "rust-app")
         .send()
-        .await
-    {
-        Ok(response) => response,
-        Err(e) => {
-            eprintln!("Failed to send request: {}", e);
-            return Json("Failed to send request.".to_string());
-        }
-    };
+        .await;
 
-    println!("Response status: {}", response.status());
+    let (sha, mut notes) = if let Ok(response) = response {
+        println!("Response status: {}", response.status());
 
-    if !response.status().is_success() {
-        eprintln!("Failed to fetch notes.json: {}", response.status());
-        return Json("Failed to fetch notes.json.".to_string());
-    }
-
-    let content: serde_json::Value = match response.json().await {
-        Ok(content) => content,
-        Err(e) => {
-            eprintln!("Failed to parse JSON: {}", e);
-            return Json("Failed to parse JSON.".to_string());
-        }
-    };
-
-    println!("Content: {:?}", content);
-
-    if let (Some(sha), Some(content)) = (
-        content.get("sha").and_then(|s| s.as_str()),
-        content.get("content").and_then(|c| c.as_str()),
-    ) {
-        let decoded = match base64::decode(content) {
-            Ok(decoded) => decoded,
-            Err(e) => {
-                eprintln!("Failed to decode base64: {}", e);
-                return Json("Failed to decode base64.".to_string());
-            }
-        };
-
-        let mut notes: Vec<Note> = match serde_json::from_slice(&decoded) {
-            Ok(notes) => notes,
-            Err(e) => {
-                eprintln!("Failed to parse notes: {}", e);
-                return Json("Failed to parse notes.".to_string());
-            }
-        };
-
-        notes.push(new_note.clone());
-
-        let updated_content = match serde_json::to_string(&notes) {
-            Ok(updated_content) => updated_content,
-            Err(e) => {
-                eprintln!("Failed to serialize notes: {}", e);
-                return Json("Failed to serialize notes.".to_string());
-            }
-        };
-
-        let encoded_content = base64::encode(&updated_content);
-
-        let update_body = serde_json::json!({
-            "message": format!("Add new note: {}", new_note.title),
-            "content": encoded_content,
-            "sha": sha
-        });
-
-        match state
-            .client
-            .put(&url)
-            .header("Authorization", format!("token {}", state.github_token))
-            .header("User-Agent", "rust-app")
-            .json(&update_body)
-            .send()
-            .await
-        {
-            Ok(_) => {
-                let note_url = format!(
-                    "https://api.github.com/repos/{}/{}/contents/content/notes/{}.md",
-                    state.repo_owner, state.repo_name, new_note.id
-                );
-
-                let note_body = serde_json::json!({
-                    "message": format!("Add note content: {}", new_note.title),
-                    "content": base64::encode(&new_note.content)
-                });
-
-                match state
-                    .client
-                    .put(&note_url)
-                    .header("Authorization", format!("token {}", state.github_token))
-                    .header("User-Agent", "rust-app")
-                    .json(&note_body)
-                    .send()
-                    .await
-                {
-                    Ok(_) => Json("Note saved successfully".to_string()),
-                    Err(e) => {
-                        eprintln!("Failed to save note content: {}", e);
-                        Json("Failed to save note content.".to_string())
-                    }
+        if response.status() == reqwest::StatusCode::NOT_FOUND {
+            // File does not exist, so initialize notes
+            (None, Vec::new())
+        } else if !response.status().is_success() {
+            eprintln!("Failed to fetch notes.json: {}", response.status());
+            return Json("Failed to fetch notes.json.".to_string());
+        } else {
+            let content: serde_json::Value = match response.json().await {
+                Ok(content) => content,
+                Err(e) => {
+                    eprintln!("Failed to parse JSON: {}", e);
+                    return Json("Failed to parse JSON.".to_string());
                 }
-            }
-            Err(e) => {
-                eprintln!("Failed to update notes.json: {}", e);
-                Json("Failed to update notes.json.".to_string())
+            };
+
+            println!("Content: {:?}", content);
+
+            if let (Some(sha), Some(content)) = (
+                content.get("sha").and_then(|s| s.as_str()),
+                content.get("content").and_then(|c| c.as_str()),
+            ) {
+                if content.is_empty() {
+                    (Some(sha.to_string()), Vec::new())
+                } else {
+                    let decoded = match base64::decode(content) {
+                        Ok(decoded) => decoded,
+                        Err(e) => {
+                            eprintln!("Failed to decode base64: {}", e);
+                            return Json("Failed to decode base64.".to_string());
+                        }
+                    };
+
+                    let notes: Vec<Note> = match serde_json::from_slice(&decoded) {
+                        Ok(notes) => notes,
+                        Err(e) => {
+                            eprintln!("Failed to parse notes: {}", e);
+                            return Json("Failed to parse notes.".to_string());
+                        }
+                    };
+
+                    (Some(sha.to_string()), notes)
+                }
+            } else {
+                eprintln!("Failed to fetch necessary data.");
+                return Json("Failed to fetch necessary data.".to_string());
             }
         }
     } else {
-        eprintln!("Failed to save note. Missing necessary data.");
-        Json("Failed to save note. Missing necessary data.".to_string())
+        eprintln!("Failed to send request.");
+        return Json("Failed to send request.".to_string());
+    };
+
+    notes.push(new_note.clone());
+
+    let updated_content = match serde_json::to_string(&notes) {
+        Ok(updated_content) => updated_content,
+        Err(e) => {
+            eprintln!("Failed to serialize notes: {}", e);
+            return Json("Failed to serialize notes.".to_string());
+        }
+    };
+
+    let encoded_content = base64::encode(&updated_content);
+
+    let update_body = serde_json::json!({
+        "message": format!("Add new note: {}", new_note.title),
+        "content": encoded_content,
+        "sha": sha
+    });
+
+    match state
+        .client
+        .put(&url)
+        .header("Authorization", format!("token {}", state.github_token))
+        .header("User-Agent", "rust-app")
+        .json(&update_body)
+        .send()
+        .await
+    {
+        Ok(_) => {
+            let note_url = format!(
+                "https://api.github.com/repos/{}/{}/contents/content/notes/{}.md",
+                state.repo_owner, state.repo_name, new_note.id
+            );
+
+            let note_body = serde_json::json!({
+                "message": format!("Add note content: {}", new_note.title),
+                "content": base64::encode(&new_note.content)
+            });
+
+            match state
+                .client
+                .put(&note_url)
+                .header("Authorization", format!("token {}", state.github_token))
+                .header("User-Agent", "rust-app")
+                .json(&note_body)
+                .send()
+                .await
+            {
+                Ok(_) => Json("Note saved successfully".to_string()),
+                Err(e) => {
+                    eprintln!("Failed to save note content: {}", e);
+                    Json("Failed to save note content.".to_string())
+                }
+            }
+        }
+        Err(e) => {
+            eprintln!("Failed to update notes.json: {}", e);
+            Json("Failed to update notes.json.".to_string())
+        }
     }
 }
 
