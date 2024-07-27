@@ -1,0 +1,23 @@
+[package]
+name = "itsnotallaboutme"
+version = "0.1.0"
+edition = "2021"
+publish = false
+
+[dependencies]
+axum = "0.7.5"
+axum-extra = { version = "0.9.3", features = ["cookie-private"] }
+bcrypt = "0.15.1"
+http = "1.1.0"
+lettre = "0.11.7"
+rand = "0.8.5"
+shuttle-shared-db = { version = "0.47.0", features = ["sqlx"] }
+sqlx = { version = "0.7.1", features = ["sqlite"] }
+serde = { version = "1.0.152", features = ["derive"] }
+shuttle-secrets = "0.42.0"
+shuttle-runtime = "0.47.0"
+shuttle-axum = "0.47.0"
+time = "0.3.20"
+tower-http = { version = "0.5.2", features = ["fs", "cors"] }
+tokio = "1.26.0"
+shuttle-service = "0.47.0"
