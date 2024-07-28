@@ -2,7 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* globals.css */
 .underline-wavy {
   text-decoration: underline;
   text-decoration-style: wavy;

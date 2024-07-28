@@ -8,6 +8,7 @@ const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: "400" });
 export const metadata: Metadata = {
   title: "itsnotallaboutme",
   description: "",
+  icons: "/profile.jpg",
 };
 
 export default function RootLayout({

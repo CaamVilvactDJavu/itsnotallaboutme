@@ -6,6 +6,7 @@ import { Metadata } from "next";
 async function getNoteContent(filename: string): Promise<string> {
   const url =
     process.env.NEXT_PUBLIC_API_BASE_URL || process.env.NEXT_PUBLIC_API_LOCAL;
+  console.log(`Fetching note content from: ${url}/api/notes/${filename}`);
   try {
     const response = await fetch(`${url}/api/notes/${filename}`);
     if (!response.ok) {
@@ -43,7 +44,7 @@ export default async function NotePage({
   const content = await getNoteContent(params.filename);
 
   return (
-    <div className="container mx-auto p-4 bg-gray-100 text-gray-900">
+    <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">{params.filename}</h1>
       <div className="prose prose-xl max-w-none">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>{content}</ReactMarkdown>
