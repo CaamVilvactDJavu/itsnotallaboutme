@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 import "./globals.css";
-import Navbar from "./Navbar";
+import Navbar from "./navbar";
 
-const inter = JetBrains_Mono({ subsets: ["latin"] });
+const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: "400" });
 
 export const metadata: Metadata = {
   title: "itsnotallaboutme",
@@ -18,9 +18,9 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${inter.className} antialiased ml-auto mr-auto flex flex-col max-w-[80rem] selection:bg-[#f54e1e] px-4 min-h-screen`}
+        className={`${jetbrains.className} antialiased ml-auto mr-auto flex flex-col max-w-[80rem] px-4 min-h-screen bg-[#dbd9c2] text-[#050505]`}
       >
-        <div className="flex flex-row w-full">
+        <div className="flex flex-col md:flex-row w-full">
           <Navbar />
           <main className="flex-grow p-4">{children}</main>
         </div>

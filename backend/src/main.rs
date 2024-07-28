@@ -22,12 +22,12 @@ async fn axum(#[shuttle_runtime::Secrets] secrets: SecretStore) -> shuttle_axum:
     let domain = secrets
         .get("DOMAIN")
         .expect("You need to set your DOMAIN secret!");
+
     let state = AppState {
         key: Key::generate(),
         domain,
     };
 
-    // Define the path to the static files
     let static_folder = PathBuf::from("static");
 
     let router = create_router(static_folder, state);

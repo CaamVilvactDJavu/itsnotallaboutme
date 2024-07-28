@@ -1,4 +1,3 @@
-// src/app/about.tsx
 export default function About() {
   const skills = [
     "Rust",
@@ -65,7 +64,10 @@ export default function About() {
           </p>
           <div className="flex flex-wrap mt-4 space-x-2">
             {skills.map((skill, index) => (
-              <span key={index} className="bg-gray-200 rounded px-2 py-1">
+              <span
+                key={index}
+                className="bg-[#050505] bg-opacity-20 rounded px-2 py-1"
+              >
                 {skill}
               </span>
             ))}
@@ -75,14 +77,17 @@ export default function About() {
           <h2 className="text-2xl font-bold">Projects</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-4">
             {projects.map((project, index) => (
-              <div key={index} className="border p-4 rounded">
+              <div
+                key={index}
+                className="border border-dashed border-[#050505] p-4 rounded"
+              >
                 <h3 className="text-xl font-bold">{project.title}</h3>
                 <p>{project.description}</p>
                 <div className="mt-2 flex flex-wrap space-x-2">
                   {project.skills.map((skill, skillIndex) => (
                     <span
                       key={skillIndex}
-                      className="bg-gray-200 rounded px-2 py-1"
+                      className="bg-[#050505] rounded px-2 py-1 bg-opacity-20"
                     >
                       {skill}
                     </span>
