@@ -3,49 +3,49 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 
-interface Note {
+interface Memoir {
   filename: string;
   title: string;
   content: string;
 }
 
-export default function NotesPage() {
-  const [notes, setNotes] = useState<Note[]>([]);
+export default function MemoirPage() {
+  const [memoirs, setMemoirs] = useState<Memoir[]>([]);
 
   useEffect(() => {
-    async function fetchNotes() {
+    async function fetchMemoirs() {
       const url = process.env.NEXT_PUBLIC_API_LOCAL;
 
       try {
-        const response = await fetch(`${url}/api/notes`);
+        const response = await fetch(`${url}/api/memoirs`);
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        const data: Note[] = await response.json();
-        setNotes(data);
+        const data: Memoir[] = await response.json();
+        setMemoirs(data);
       } catch (error) {
         console.error("Error fetching notes:", error);
       }
     }
 
-    fetchNotes();
+    fetchMemoirs();
   }, []);
 
   return (
     <main>
       <div className="mx-auto p-4">
         <ul className="space-y-4">
-          {notes.map((note) => (
+          {memoirs.map((memoir) => (
             <li
-              key={note.filename}
+              key={memoir.filename}
               className="shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
             >
-              <Link href={`/notes/${note.filename}`} className="font-bold">
+              <Link href={`/memoirs/${memoir.filename}`} className="font-bold">
                 <h2 className="text-lg mb-2 border-b-2 border-dashed border-[#1f1f1f]">
-                  {note.title}
+                  {memoir.title}
                 </h2>
                 <p className="text-gray-700 text-sm line-clamp-2">
-                  {note.content}
+                  {memoir.content}
                 </p>
               </Link>
             </li>

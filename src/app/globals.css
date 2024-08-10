@@ -2,9 +2,9 @@
 @tailwind components;
 @tailwind utilities;
 
-.underline-wavy {
+.underline-dashed {
   text-decoration: underline;
-  text-decoration-style: wavy;
+  text-decoration-style: dashed;
 }
 
 h1 {

@@ -82,7 +82,6 @@ export default function About() {
   return (
     <main className="p-4">
       <div>
-        <h1 className="text-3xl font-bold">About</h1>
         <section className="mt-8">
           <h2 className="text-2xl font-bold">Skills</h2>
           <p className="text-red-500 mt-2">Disclaimer!</p>
@@ -145,7 +144,6 @@ export default function About() {
   );
 }
 
-// Define the SVG icons as separate components
 function RustIcon() {
   return (
     <svg

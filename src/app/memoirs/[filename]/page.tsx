@@ -1,11 +1,11 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
-async function getNoteContent(filename: string) {
+async function getMemoirContent(filename: string) {
   const url = process.env.NEXT_PUBLIC_API_LOCAL;
 
   try {
-    const response = await fetch(`${url}/api/notes/${filename}`);
+    const response = await fetch(`${url}/api/memoirs/${filename}`);
 
     if (!response.ok) {
       throw new Error(`Failed to fetch note: ${response.statusText}`);
@@ -20,22 +20,22 @@ async function getNoteContent(filename: string) {
 }
 
 export async function generateStaticParams() {
-  const notes = ["sample", "helloworld"]; // These should match your markdown filenames
-  return notes.map((note) => ({ filename: note }));
+  const memoirs = ["entah-siapa-yang-harus-disalahkan", "renungan-malam"];
+  return memoirs.map((memoir) => ({ filename: memoir }));
 }
 
-export default async function NotePage({
+export default async function MemoirPage({
   params,
 }: {
   params: { filename: string };
 }) {
-  const note = await getNoteContent(params.filename);
+  const memoir = await getMemoirContent(params.filename);
   return (
     <div className="container mx-auto p-4">
-      <h1 className="text-2xl font-bold mb-4">{note.title}</h1>
-      <div className="prose prose-xl max-w-none">
+      <h1 className="text-2xl font-bold mb-4">{memoir.title}</h1>
+      <div className="prose prose-xl max-w-none space-y-4">
         <ReactMarkdown remarkPlugins={[remarkGfm]}>
-          {note.content}
+          {memoir.content}
         </ReactMarkdown>
       </div>
     </div>

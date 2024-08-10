@@ -21,27 +21,30 @@ const Navbar = () => {
       </div>
       <ul className="flex md:flex-col space-x-4 md:space-x-0 md:space-y-4 justify-center md:justify-start p-4 md:p-0">
         <li>
-          <Link href="/" className="hover:underline hover:decoration-wavy">
+          <Link href="/" className="hover:underline hover:decoration-dashed">
             <span>Home</span>
           </Link>
         </li>
         <li>
-          <Link href="/about" className="hover:underline hover:decoration-wavy">
+          <Link
+            href="/about"
+            className="hover:underline hover:decoration-dashed"
+          >
             <span>About</span>
           </Link>
         </li>
         <li>
-          <span>Music</span>
-        </li>
-        <li>
-          <Link href="/notes" className="hover:underline hover:decoration-wavy">
+          <Link
+            href="/notes"
+            className="hover:underline hover:decoration-dashed"
+          >
             <span>Notes</span>
           </Link>
         </li>
         <li>
           <Link
-            href="/memoir"
-            className="hover:underline hover:decoration-wavy"
+            href="/memoirs"
+            className="hover:underline hover:decoration-dashed"
           >
             <span>Memoir</span>
           </Link>
