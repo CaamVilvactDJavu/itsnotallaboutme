@@ -7,17 +7,17 @@ const Navbar = () => {
       <div className="md:mb-8 text-left flex md:flex-col items-center md:items-start justify-between p-4 md:p-0">
         <div>
           <h1 className="text-2xl font-bold">Itsnotallaboutme</h1>
-          <p className="text-sm text-[#666]">c.a._.a.m</p>
+          <p className="text-sm">c.a._.a.m</p>
         </div>
-        <div className="md:mt-4">
-          <Image
-            src="/profile.jpg"
-            alt="profile"
-            width={230}
-            height={230}
-            className="rounded-xl"
-          />
-        </div>
+        {/* <div className="md:mt-4"> */}
+        {/*   <Image */}
+        {/*     src="/profile.jpg" */}
+        {/*     alt="profile" */}
+        {/*     width={230} */}
+        {/*     height={230} */}
+        {/*     className="rounded-xl" */}
+        {/*   /> */}
+        {/* </div> */}
       </div>
       <ul className="flex md:flex-col space-x-4 md:space-x-0 md:space-y-4 justify-center md:justify-start p-4 md:p-0">
         <li>

@@ -19,7 +19,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${jetbrains.className} antialiased ml-auto mr-auto flex flex-col max-w-[80rem] px-4 min-h-screen bg-[#dbd9c2] text-[#050505]`}
+        className={`${jetbrains.className} antialiased ml-auto mr-auto flex flex-col max-w-[80rem] px-4 min-h-screen bg-[#cccccc] text-[#1f1f1f] border-[#1f1f1f] border-dashed border-r border-l selection:bg-[#eae7de]`}
       >
         <div className="flex flex-col md:flex-row w-full">
           <Navbar />

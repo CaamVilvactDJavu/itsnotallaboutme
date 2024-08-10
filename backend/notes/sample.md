@@ -1,15 +1,5 @@
-# Sample Note
+# Title of the Note
 
-### Hello
+2024-08-10
 
-# Hello
-
-> This is my content
-
-This is a sample note in markdown format.
-**Hello Guys**
-
-1. Hello
-
-- I want to
-  - This is
+Content of the note goes here...

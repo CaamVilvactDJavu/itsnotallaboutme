@@ -1,14 +1,56 @@
 use crate::AppState;
 use axum::http::StatusCode;
+use axum::response::Json;
 use axum::{extract::Path, response::IntoResponse, Router};
 use http::{
     header::{ACCEPT, AUTHORIZATION, ORIGIN},
     HeaderValue, Method,
 };
+use serde::Serialize;
 use std::fs;
 use std::path::PathBuf;
 use tower_http::cors::CorsLayer;
 use tower_http::services::ServeDir;
+
+#[derive(Serialize)]
+struct Note {
+    filename: String,
+    title: String,
+    date: String,
+    content: String,
+}
+
+pub async fn list_notes() -> impl IntoResponse {
+    let notes_dir = "notes";
+    let mut notes_list = Vec::new();
+
+    // Read all files in the notes directory
+    if let Ok(entries) = fs::read_dir(notes_dir) {
+        for entry in entries.filter_map(Result::ok) {
+            let path = entry.path();
+            if path.is_file() {
+                let filename = path
+                    .file_stem()
+                    .unwrap_or_default()
+                    .to_str()
+                    .unwrap_or_default();
+                let path_str = path.display().to_string();
+                // Read file content to extract metadata
+                if let Ok(content) = fs::read_to_string(&path_str) {
+                    let (title, date, _) = parse_markdown(&content);
+                    notes_list.push(Note {
+                        filename: filename.to_string(),
+                        title,
+                        date,
+                        content: "".to_string(), // Only show metadata in list
+                    });
+                }
+            }
+        }
+    }
+
+    (StatusCode::OK, Json(notes_list)).into_response()
+}
 
 pub fn api_router(state: AppState) -> Router {
     let cors = CorsLayer::new()
@@ -19,6 +61,7 @@ pub fn api_router(state: AppState) -> Router {
 
     Router::new()
         .route("/notes/:filename", axum::routing::get(get_note))
+        .route("/notes", axum::routing::get(list_notes)) // Ensure this route is added
         .with_state(state)
         .layer(cors)
 }
@@ -26,13 +69,38 @@ pub fn api_router(state: AppState) -> Router {
 pub async fn get_note(Path(filename): Path<String>) -> impl IntoResponse {
     let path = PathBuf::from(format!("notes/{}.md", filename));
     println!("Attempting to read file at path: {:?}", path);
+
     match fs::read_to_string(&path) {
-        Ok(content) => (StatusCode::OK, content).into_response(),
+        Ok(content) => {
+            let (title, date, content) = parse_markdown(&content);
+            let note = Note {
+                filename: filename.clone(), // Add filename here if needed
+                title,
+                date,
+                content,
+            };
+            (StatusCode::OK, Json(note)).into_response()
+        }
         Err(err) => {
             println!("Error reading file: {:?}", err);
             (StatusCode::NOT_FOUND, "Note not found").into_response()
         }
     }
+}
+
+fn parse_markdown(content: &str) -> (String, String, String) {
+    let lines: Vec<&str> = content.lines().collect();
+
+    let title = lines.first().unwrap_or(&"").to_string();
+    let date = lines.get(1).unwrap_or(&"").to_string();
+    let content = lines
+        .iter()
+        .skip(2)
+        .cloned()
+        .collect::<Vec<&str>>()
+        .join("\n");
+
+    (title, date, content)
 }
 
 pub fn create_router(static_folder: PathBuf, state: AppState) -> Router {
