@@ -2,7 +2,8 @@ import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
 async function getMemoirContent(filename: string) {
-  const url = process.env.NEXT_PUBLIC_API_LOCAL;
+  const url =
+    process.env.NEXT_PUBLIC_API_LOCAL || process.env.NEXT_PUBLIC_API_BASE_URL;
 
   try {
     const response = await fetch(`${url}/api/memoirs/${filename}`);
@@ -11,8 +12,8 @@ async function getMemoirContent(filename: string) {
       throw new Error(`Failed to fetch note: ${response.statusText}`);
     }
 
-    const note = await response.json();
-    return note;
+    const memoir = await response.json();
+    return memoir;
   } catch (error) {
     console.error("Error fetching note content:", error);
     return { title: "Error", content: "Could not load content." };

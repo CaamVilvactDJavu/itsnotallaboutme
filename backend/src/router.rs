@@ -19,6 +19,22 @@ struct Note {
     content: String,
 }
 
+pub fn api_router(state: AppState) -> Router {
+    let cors = CorsLayer::new()
+        .allow_credentials(true)
+        .allow_methods(vec![Method::GET, Method::POST, Method::PUT, Method::DELETE])
+        .allow_headers(vec![ORIGIN, AUTHORIZATION, ACCEPT])
+        .allow_origin(state.domain.parse::<HeaderValue>().unwrap());
+
+    Router::new()
+        .route("/notes", axum::routing::get(list_notes))
+        .route("/notes/:filename", axum::routing::get(get_note))
+        .route("/memoirs", axum::routing::get(list_memoirs))
+        .route("/memoirs/:filename", axum::routing::get(get_memoir))
+        .with_state(state)
+        .layer(cors)
+}
+
 pub async fn list_notes() -> impl IntoResponse {
     let notes_dir = "notes";
     let mut notes_list = Vec::new();
@@ -75,22 +91,6 @@ pub async fn list_memoirs() -> impl IntoResponse {
     }
 
     (StatusCode::OK, Json(memoirs_list)).into_response()
-}
-
-pub fn api_router(state: AppState) -> Router {
-    let cors = CorsLayer::new()
-        .allow_credentials(true)
-        .allow_methods(vec![Method::GET, Method::POST, Method::PUT, Method::DELETE])
-        .allow_headers(vec![ORIGIN, AUTHORIZATION, ACCEPT])
-        .allow_origin(state.domain.parse::<HeaderValue>().unwrap());
-
-    Router::new()
-        .route("/notes/:filename", axum::routing::get(get_note))
-        .route("/memoirs/:filename", axum::routing::get(get_memoir))
-        .route("/notes", axum::routing::get(list_notes))
-        .route("/memoirs", axum::routing::get(list_memoirs))
-        .with_state(state)
-        .layer(cors)
 }
 
 pub async fn get_note(Path(filename): Path<String>) -> impl IntoResponse {

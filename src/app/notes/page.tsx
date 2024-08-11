@@ -14,7 +14,9 @@ export default function NotesPage() {
 
   useEffect(() => {
     async function fetchNotes() {
-      const url = process.env.NEXT_PUBLIC_API_LOCAL;
+      const url =
+        process.env.NEXT_PUBLIC_API_LOCAL ||
+        process.env.NEXT_PUBLIC_API_BASE_URL;
 
       try {
         const response = await fetch(`${url}/api/notes`);
@@ -32,8 +34,8 @@ export default function NotesPage() {
   }, []);
 
   return (
-    <main>
-      <div className="mx-auto p-4">
+    <main className="mx-auto p-4">
+      <div>
         <ul className="space-y-4">
           {notes.map((note) => (
             <li

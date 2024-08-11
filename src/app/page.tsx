@@ -4,9 +4,6 @@ export default function Home() {
   return (
     <div className="flex flex-col items-center justify-center text-center p-4">
       <div className="flex flex-col md:flex-row items-center justify-center w-full max-w-5xl gap-6">
-        <h4 className="text-xs sm:text-sm md:text-base lg:text-lg">
-          https://itsnotallaboutme.shuttleapp.rs/
-        </h4>
         <div className="flex flex-col items-center gap-4">
           <div
             className="font-extrabold text-xl sm:text-2xl md:text-3xl lg:text-4xl p-4
@@ -29,6 +26,9 @@ export default function Home() {
             height={600}
             className="rounded-xl w-full h-auto"
           />
+          <h4 className="text-xs sm:text-sm md:text-base lg:text-lg mt-4">
+            https://itsnotallaboutme.shuttleapp.rs/
+          </h4>
         </div>
       </div>
       <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8 p-4">
