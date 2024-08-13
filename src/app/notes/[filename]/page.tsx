@@ -1,3 +1,4 @@
+import Image from "next/image";
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 
@@ -21,7 +22,7 @@ async function getNoteContent(filename: string) {
 }
 
 export async function generateStaticParams() {
-  const notes = ["linux"];
+  const notes = ["dotfiles"];
   return notes.map((note) => ({ filename: note }));
 }
 
@@ -34,8 +35,23 @@ export default async function NotePage({
   return (
     <div className="container mx-auto p-4">
       <h1 className="text-2xl font-bold mb-4">{note.title}</h1>
-      <div className="prose prose-xl max-w-none">
-        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+      <div className="prose prose-xl max-w-none space-y-4">
+        <ReactMarkdown
+          remarkPlugins={[remarkGfm]}
+          components={{
+            img: ({ node, ...props }) => (
+              <Image
+                {...props}
+                alt={props.alt || "Image"}
+                src={props.src as string}
+                width={600}
+                height={400}
+                className="rounded-md"
+                layout="responsive"
+              />
+            ),
+          }}
+        >
           {note.content}
         </ReactMarkdown>
       </div>

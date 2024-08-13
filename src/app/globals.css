@@ -7,6 +7,15 @@
   text-decoration-style: dashed;
 }
 
+.prose ol {
+  list-style-type: decimal-leading-zero;
+  margin-left: 2.5rem;
+}
+
+.prose li {
+  margin-bottom: 0.5rem;
+}
+
 h1 {
   margin-bottom: 0.75rem;
   font-size: 2rem; /* Decreased size */
