@@ -35,6 +35,14 @@ const Navbar = () => {
         </li>
         <li>
           <Link
+            href="/bookshelf"
+            className="hover:underline hover:decoration-dashed"
+          >
+            <span>Bookshelf</span>
+          </Link>
+        </li>
+        <li>
+          <Link
             href="/notes"
             className="hover:underline hover:decoration-dashed"
           >

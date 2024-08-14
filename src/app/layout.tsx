@@ -8,7 +8,7 @@ const jetbrains = JetBrains_Mono({ subsets: ["latin"], weight: "400" });
 export const metadata: Metadata = {
   title: "itsnotallaboutme",
   description: "",
-  icons: "/profile.jpg",
+  icons: "/icon.png",
 };
 
 export default function RootLayout({
@@ -18,6 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <link rel="icon" href="/icon.png" type="image/png" sizes="32x32" />
       <body
         className={`${jetbrains.className} antialiased ml-auto mr-auto flex flex-col max-w-[80rem] px-4 min-h-screen bg-[#cccccc] text-[#1f1f1f] border-[#1f1f1f] border-dashed border-r border-l selection:bg-[#eae7de]`}
       >
