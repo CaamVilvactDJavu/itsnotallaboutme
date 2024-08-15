@@ -7,6 +7,7 @@ import {
   mdiLanguageTypescript,
   mdiLanguageJavascript,
 } from "@mdi/js";
+import Image from "next/image";
 
 export default function About() {
   const languages = [
@@ -79,6 +80,19 @@ export default function About() {
 
   return (
     <main className="mx-auto p-4">
+      <section className="mb-6">
+        <h2>Platfrom Badge</h2>
+        <div className="flex justify-center items-center">
+          <Image
+            src="https://www.codewars.com/users/CaamVilvactDJavu/badges/large?theme=light"
+            alt="CodeWars Badge"
+            className="w-auto h-auto"
+            width={1000}
+            height={1000}
+          />
+        </div>
+      </section>
+
       <section className="prose prose-lg">
         <h2>Programming Languages</h2>
         <div className="flex gap-2 mb-6">

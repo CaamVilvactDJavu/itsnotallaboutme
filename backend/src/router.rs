@@ -1,4 +1,5 @@
 use crate::AppState;
+use axum::extract::State;
 use axum::http::StatusCode;
 use axum::response::Json;
 use axum::{extract::Path, response::IntoResponse, Router};
@@ -7,8 +8,11 @@ use http::{
     HeaderValue, Method,
 };
 use serde::Serialize;
+use serde_json::json;
 use std::fs;
 use std::path::PathBuf;
+use tower_cookies::CookieManagerLayer;
+use tower_cookies::{Cookie, Cookies};
 use tower_http::cors::CorsLayer;
 use tower_http::services::ServeDir;
 
@@ -21,6 +25,7 @@ struct Note {
 
 pub fn api_router(state: AppState) -> Router {
     let cors = CorsLayer::new()
+        .allow_origin(["http://localhost:3000".parse().unwrap()])
         .allow_credentials(true)
         .allow_methods(vec![Method::GET, Method::POST, Method::PUT, Method::DELETE])
         .allow_headers(vec![ORIGIN, AUTHORIZATION, ACCEPT])
@@ -31,8 +36,55 @@ pub fn api_router(state: AppState) -> Router {
         .route("/notes/:filename", axum::routing::get(get_note))
         .route("/memoirs", axum::routing::get(list_memoirs))
         .route("/memoirs/:filename", axum::routing::get(get_memoir))
+        .route("/visitors", axum::routing::get(get_visitors))
+        .route(
+            "/visitors/increment",
+            axum::routing::post(increment_visitors),
+        )
         .with_state(state)
         .layer(cors)
+}
+
+pub async fn get_visitors(State(state): State<AppState>) -> impl IntoResponse {
+    match sqlx::query_scalar::<_, i64>("SELECT count FROM visitors WHERE id = 1")
+        .fetch_one(&state.db)
+        .await
+    {
+        Ok(count) => Json(json!({ "count": count })).into_response(),
+        Err(_) => (
+            StatusCode::INTERNAL_SERVER_ERROR,
+            "Failed to get visitor count",
+        )
+            .into_response(),
+    }
+}
+
+pub async fn increment_visitors(
+    State(state): State<AppState>,
+    cookies: Cookies,
+) -> impl IntoResponse {
+    let visited_cookie = cookies.get("visited");
+
+    if visited_cookie.is_none() {
+        // Increment the visitor count
+        match sqlx::query("UPDATE visitors SET count = count + 1 WHERE id = 1")
+            .execute(&state.db)
+            .await
+        {
+            Ok(_) => {
+                // Set the 'visited' cookie to prevent multiple increments
+                cookies.add(Cookie::new("visited", "true"));
+                StatusCode::OK.into_response()
+            }
+            Err(_) => (
+                StatusCode::INTERNAL_SERVER_ERROR,
+                "Failed to increment visitor count",
+            )
+                .into_response(),
+        }
+    } else {
+        StatusCode::OK.into_response()
+    }
 }
 
 pub async fn list_notes() -> impl IntoResponse {
@@ -151,7 +203,9 @@ fn parse_markdown(content: &str) -> (String, String) {
 
 pub fn create_router(static_folder: PathBuf, state: AppState) -> Router {
     let api_router = api_router(state);
+
     Router::new()
         .nest("/api", api_router)
         .fallback_service(ServeDir::new(static_folder).append_index_html_on_directories(true))
+        .layer(CookieManagerLayer::new())
 }

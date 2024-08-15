@@ -1,5 +1,6 @@
 // import Image from "next/image";
 import Link from "next/link";
+import VisitorCounter from "./visitor_count";
 
 const Navbar = () => {
   return (
@@ -88,6 +89,7 @@ const Navbar = () => {
           <GithubIcon />
         </Link>
       </div>
+      <VisitorCounter />
     </nav>
   );
 };
