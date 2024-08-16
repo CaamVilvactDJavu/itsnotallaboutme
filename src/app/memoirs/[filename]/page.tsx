@@ -21,7 +21,11 @@ async function getMemoirContent(filename: string) {
 }
 
 export async function generateStaticParams() {
-  const memoirs = ["entah-siapa-yang-harus-disalahkan", "renungan-malam"];
+  const memoirs = [
+    "entah-siapa-yang-harus-disalahkan",
+    "renungan-malam",
+    "saat-hati-terguncang",
+  ];
   return memoirs.map((memoir) => ({ filename: memoir }));
 }
 
