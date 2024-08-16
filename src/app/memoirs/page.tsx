@@ -14,8 +14,8 @@ export default function MemoirPage() {
 
   useEffect(() => {
     async function fetchMemoirs() {
-      const url = process.env.NEXT_PUBLIC_API_LOCAL;
-      // const url = process.env.NEXT_PUBLIC_API_BASE_URL;
+      // const url = process.env.NEXT_PUBLIC_API_LOCAL;
+      const url = process.env.NEXT_PUBLIC_API_BASE_URL;
 
       try {
         const response = await fetch(`${url}/api/memoirs`);
