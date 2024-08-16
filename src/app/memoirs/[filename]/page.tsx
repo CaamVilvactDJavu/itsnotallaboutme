@@ -35,11 +35,12 @@ export default async function MemoirPage({
 }: {
   params: { filename: string };
 }) {
-  const url = process.env.NEXT_PUBLIC_API_BASE_URL;
+  // const url = process.env.NEXT_PUBLIC_API_BASE_URL;
   const memoir = await getMemoirContent(params.filename);
   const postTitle = memoir.title || "Memoir";
   const postDescription = memoir.content.slice(0, 150) || "Memoir description";
-  const postUrl = `${url}/memoirs/${params.filename}`;
+  // const postUrl = `${url}/memoirs/${params.filename}`;
+  const postUrl = `https://itsnotallaboutme.shuttleapp.rs/memoirs/${params.filename}/`;
   const postImage = "/icon.png";
 
   return (
