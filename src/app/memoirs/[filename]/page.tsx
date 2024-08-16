@@ -40,7 +40,7 @@ export default async function MemoirPage({
   const postTitle = memoir.title || "Memoir";
   const postDescription = memoir.content.slice(0, 150) || "Memoir description";
   // const postUrl = `${url}/memoirs/${params.filename}`;
-  const postUrl = `https://itsnotallaboutme.shuttleapp.rs/memoirs/${params.filename}/`;
+  const postUrl = `https://itsnotallaboutme.shuttleapp.rs/memoirs/${params.filename}`;
   const postImage = "/icon.png";
 
   return (
