@@ -1,5 +1,7 @@
 "use client";
 
+import { mdiEarth } from "@mdi/js";
+import Icon from "@mdi/react";
 import { useState, useEffect } from "react";
 
 const VisitorCounter = () => {
@@ -32,29 +34,27 @@ const VisitorCounter = () => {
         if (!response.ok) {
           throw new Error("Failed to increment visitor count");
         }
-        // Fetch the updated visitor count after incrementing
         await fetchVisitorCount();
       } catch (error) {
         console.error("Error incrementing visitor count:", error);
       }
     };
 
-    // Increment visitor count and then fetch it
     incrementVisitorCount();
 
-    // Fetch the visitor count initially
     fetchVisitorCount();
 
-    // Set up an interval to periodically fetch visitor count
     const interval = setInterval(fetchVisitorCount, 60000);
 
-    // Clean up interval on component unmount
     return () => clearInterval(interval);
   }, []);
 
   return (
-    <div className="flex justify-center mt-4 text-md font-semibold">
-      <p>Visitors {visitorCount}</p>
+    <div className="flex justify-center items-center self-center mt-4 text-md font-semibold">
+      <div className="flex items-center">
+        <Icon path={mdiEarth} size={1.5} />
+        <span className="ml-1">{visitorCount}</span>
+      </div>
     </div>
   );
 };

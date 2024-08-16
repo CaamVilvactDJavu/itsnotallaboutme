@@ -59,6 +59,7 @@ const Navbar = () => {
           </Link>
         </li>
       </ul>
+      <VisitorCounter />
       <div className="mt-4 md:mt-8 md:px-12 flex justify-center space-x-4 px-12">
         <Link
           href="https://www.linkedin.com/in/ilham-fadhlur-00022b145"
@@ -89,7 +90,6 @@ const Navbar = () => {
           <GithubIcon />
         </Link>
       </div>
-      <VisitorCounter />
     </nav>
   );
 };
