@@ -1,5 +1,6 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
+import { memoirs } from "../../../data/memoirsList";
 
 async function getMemoirContent(filename: string) {
   // const url = process.env.NEXT_PUBLIC_API_LOCAL;
@@ -21,11 +22,6 @@ async function getMemoirContent(filename: string) {
 }
 
 export async function generateStaticParams() {
-  const memoirs = [
-    "saat-hati-terguncang",
-    "renungan-malam",
-    "entah-siapa-yang-harus-disalahkan",
-  ];
   return memoirs.map((memoir) => ({ filename: memoir }));
 }
 
