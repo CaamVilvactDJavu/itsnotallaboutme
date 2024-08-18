@@ -51,6 +51,7 @@ export default async function MemoirPage({
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:image" content={postImage} />
         <meta name="twitter:site" content="@CaamVilvact" />
+        <meta name="twitter:description" content={postDescription} />
         <meta name="viewport" content="width=375" />
         <meta property="og:url" content={postUrl} />
         <meta property="og:type" content="article" />
