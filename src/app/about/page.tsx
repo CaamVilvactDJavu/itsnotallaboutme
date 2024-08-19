@@ -82,13 +82,22 @@ export default function About() {
     <main className="mx-auto p-4">
       <section className="mb-6">
         <h2>Platfrom Badge</h2>
-        <div className="flex justify-center items-center">
+        <div className="flex flex-col gap-4 justify-center items-center">
+          <a href="https://app.daily.dev/caamvilvact">
+            <Image
+              src="https://api.daily.dev/devcards/v2/vRUs99OBcXAqCpPlgOml4.png?type=wide&r=yaz"
+              className="w-auto h-auto"
+              width={100}
+              height={100}
+              alt="c.a ._. a.m's Dev Card"
+            />
+          </a>
           <Image
             src="https://www.codewars.com/users/CaamVilvactDJavu/badges/large?theme=light"
             alt="CodeWars Badge"
             className="w-auto h-auto"
-            width={1000}
-            height={1000}
+            width={100}
+            height={100}
           />
         </div>
       </section>
