@@ -36,6 +36,11 @@ export default function BookshelfPage() {
       genre: "Philosophy",
     },
     {
+      name: "Kosmologi dan Penciptaan",
+      author: "Paul Brockelman",
+      genre: "Philosophy",
+    },
+    {
       name: "Intisari Sejarah Dunia: Dari Zaman Prasejarah Sampai Dunia Kontemporer",
       author: "Ahmad Sobirin",
       genre: "History",
