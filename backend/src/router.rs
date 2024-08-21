@@ -7,9 +7,11 @@ use http::{
     header::{ACCEPT, AUTHORIZATION, ORIGIN},
     HeaderValue, Method,
 };
-use serde::Serialize;
-use serde_json::json;
-use std::fs;
+use serde::{Deserialize, Serialize};
+use serde_json::{json, Value};
+use std::collections::HashMap;
+use std::fs::{self, File};
+use std::io::Read;
 use std::path::PathBuf;
 use tower_cookies::CookieManagerLayer;
 use tower_cookies::{Cookie, Cookies};
@@ -23,6 +25,13 @@ struct Note {
     content: String,
 }
 
+#[derive(Serialize, Deserialize, Debug)]
+struct Book {
+    title: String,
+    author: String,
+    genre: String,
+}
+
 pub fn api_router(state: AppState) -> Router {
     let cors = CorsLayer::new()
         .allow_origin(["http://localhost:3000".parse().unwrap()])
@@ -32,6 +41,7 @@ pub fn api_router(state: AppState) -> Router {
         .allow_origin(state.domain.parse::<HeaderValue>().unwrap());
 
     Router::new()
+        .route("/bookshelf", axum::routing::get(get_bookshelfs))
         .route("/notes", axum::routing::get(list_notes))
         .route("/notes/:filename", axum::routing::get(get_note))
         .route("/memoirs", axum::routing::get(list_memoirs))
@@ -43,6 +53,31 @@ pub fn api_router(state: AppState) -> Router {
         )
         .with_state(state)
         .layer(cors)
+}
+
+pub async fn get_bookshelfs() -> impl IntoResponse {
+    let filepath = "bookshelf/bookshelf.json";
+    print!("filepath: {:?}", filepath);
+    let mut file = File::open(filepath).expect("Failed to open file");
+    print!("file: {:?}", file);
+
+    let mut contents = String::new();
+    file.read_to_string(&mut contents)
+        .expect("Failed to read file");
+    println!("contents: {:?}", contents);
+
+    let json: HashMap<String, Value> =
+        serde_json::from_str(&contents).expect("Failed to parse JSON");
+    println!("json: {:?}", json);
+
+    let mut books = Vec::new();
+    for (_, value) in json {
+        let book: Book = serde_json::from_value(value).expect("Failed to parse book");
+        books.push(book);
+    }
+    println!("books: {:?}", books);
+
+    (StatusCode::OK, Json(books)).into_response()
 }
 
 pub async fn get_visitors(State(state): State<AppState>) -> impl IntoResponse {
@@ -66,13 +101,11 @@ pub async fn increment_visitors(
     let visited_cookie = cookies.get("visited");
 
     if visited_cookie.is_none() {
-        // Increment the visitor count
         match sqlx::query("UPDATE visitors SET count = count + 1 WHERE id = 1")
             .execute(&state.db)
             .await
         {
             Ok(_) => {
-                // Set the 'visited' cookie to prevent multiple increments
                 cookies.add(Cookie::new("visited", "true"));
                 StatusCode::OK.into_response()
             }

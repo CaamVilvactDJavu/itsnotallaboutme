@@ -3,6 +3,7 @@ use axum_extra::extract::cookie::Key;
 use shuttle_runtime::SecretStore;
 use sqlx::SqlitePool;
 use std::path::PathBuf;
+mod cli;
 mod router;
 use router::create_router;
 

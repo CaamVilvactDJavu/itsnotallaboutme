@@ -4,7 +4,12 @@ version = "0.1.0"
 edition = "2021"
 publish = false
 
+[[bin]]
+name = "cli"
+path = "src/cli.rs"
+
 [dependencies]
+clap = { version = "4.5.16", features = ["derive"] }
 axum = "0.7.5"
 axum-extra = { version = "0.9.3", features = ["cookie-private"] }
 bcrypt = "0.15.1"
