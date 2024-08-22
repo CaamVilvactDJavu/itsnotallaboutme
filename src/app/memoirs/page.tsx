@@ -33,7 +33,7 @@ export default function MemoirPage() {
   }, []);
 
   return (
-    <main className="mx-auto p-4">
+    <main className="py-4">
       <div>
         <ul className="space-y-4">
           {memoirs.map((memoir) => (

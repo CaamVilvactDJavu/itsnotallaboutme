@@ -33,7 +33,7 @@ export default async function NotePage({
 }) {
   const note = await getNoteContent(params.filename);
   return (
-    <div className="container mx-auto p-4">
+    <main className="py-4">
       <h1 className="text-2xl font-bold mb-4">{note.title}</h1>
       <div className="prose prose-xl max-w-none space-y-4">
         <ReactMarkdown
@@ -55,6 +55,6 @@ export default async function NotePage({
           {note.content}
         </ReactMarkdown>
       </div>
-    </div>
+    </main>
   );
 }

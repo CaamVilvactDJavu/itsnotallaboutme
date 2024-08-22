@@ -30,11 +30,9 @@ export default async function MemoirPage({
 }: {
   params: { filename: string };
 }) {
-  // const url = process.env.NEXT_PUBLIC_API_BASE_URL;
   const memoir = await getMemoirContent(params.filename);
   const postTitle = memoir.title || "Memoir";
   const postDescription = memoir.content.slice(0, 150) || "Memoir description";
-  // const postUrl = `${url}/memoirs/${params.filename}`;
   const postUrl = `https://itsnotallaboutme.shuttleapp.rs/memoirs/${params.filename}`;
   const postImage = "/icon.png";
 
@@ -56,14 +54,12 @@ export default async function MemoirPage({
         <meta property="og:title" content={postTitle} />
         <meta property="og:image" content={postImage} />
       </head>
-      <main>
-        <div className="container mx-auto p-4">
-          <h1 className="text-2xl font-bold mb-4">{memoir.title}</h1>
-          <div className="prose prose-xl max-w-none space-y-4">
-            <ReactMarkdown remarkPlugins={[remarkGfm]}>
-              {memoir.content}
-            </ReactMarkdown>
-          </div>
+      <main className="py-4">
+        <h1 className="text-2xl font-bold mb-4">{memoir.title}</h1>
+        <div className="prose prose-xl max-w-none space-y-4">
+          <ReactMarkdown remarkPlugins={[remarkGfm]}>
+            {memoir.content}
+          </ReactMarkdown>
         </div>
       </main>
     </>

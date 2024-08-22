@@ -41,7 +41,7 @@ pub fn api_router(state: AppState) -> Router {
         .allow_origin(state.domain.parse::<HeaderValue>().unwrap());
 
     Router::new()
-        .route("/bookshelf", axum::routing::get(get_bookshelfs))
+        .route("/bookshelfs", axum::routing::get(get_bookshelfs))
         .route("/notes", axum::routing::get(list_notes))
         .route("/notes/:filename", axum::routing::get(get_note))
         .route("/memoirs", axum::routing::get(list_memoirs))
@@ -56,7 +56,7 @@ pub fn api_router(state: AppState) -> Router {
 }
 
 pub async fn get_bookshelfs() -> impl IntoResponse {
-    let filepath = "bookshelf/bookshelf.json";
+    let filepath = "bookshelfs/bookshelf.json";
     print!("filepath: {:?}", filepath);
     let mut file = File::open(filepath).expect("Failed to open file");
     print!("file: {:?}", file);

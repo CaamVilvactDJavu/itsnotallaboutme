@@ -1,0 +1,193 @@
+{
+  "20": {
+    "title": "Giselle - ジゼル",
+    "genre": "Mystery",
+    "author": "Akiyoshi Rikako"
+  },
+  "10": {
+    "title": "Sejarah Bangsa Israel dalam Bibel dan Al-Quran",
+    "genre": "History",
+    "author": "Louay Fatoohi, Shetha Dargazelli"
+  },
+  "26": {
+    "title": "Filsafat Sejarah",
+    "genre": "Philosophy",
+    "author": "Ahmad Sahidin, Ajid Thohir"
+  },
+  "13": {
+    "title": "Mencari Kembali Tuhan yang Hilang",
+    "genre": "Religion",
+    "author": "Deni Sutan Bahtiar"
+  },
+  "11": {
+    "title": "Sains berbasis Al-Qur'an",
+    "genre": "Science",
+    "author": "Ridwan Abdullah Sani"
+  },
+  "7": {
+    "title": "Misteri Patung Garam",
+    "genre": "Mystery",
+    "author": "Ruwi Meita"
+  },
+  "23": {
+    "title": "Credit Roll of the Fool - 愚者のエンドロール (Series 2)",
+    "genre": "Mystery",
+    "author": "Yonezawa Honobu"
+  },
+  "6": {
+    "title": "Intisari Sejarah Dunia: Dari Zaman Prasejarah Sampai Dunia Kontemporer",
+    "genre": "History",
+    "author": "Ahmad Sobirin"
+  },
+  "25": {
+    "title": "Misteri Keajaiban Isra' Mi'raj",
+    "genre": "Religion",
+    "author": "Abu Majdi Haraki"
+  },
+  "27": {
+    "title": "The Complete Sherlock Holmes",
+    "genre": "Detective",
+    "author": "Sir Arthur Conan Doyle"
+  },
+  "38": {
+    "title": "My Brief History",
+    "genre": "Biography",
+    "author": "Stephen Hawking"
+  },
+  "24": {
+    "title": "Minhajul 'Abidin; 7 Tahapan Menuju Puncak Ahli Ibadah",
+    "genre": "Religion",
+    "author": "Imam al-Ghazali"
+  },
+  "4": {
+    "title": "Tahafut Al-Falasifah (The Incoherence of the Philosophers)",
+    "genre": "Philosophy",
+    "author": "Imam al-Ghazali"
+  },
+  "12": {
+    "title": "Sokrates Dalam Tetralogi Plato",
+    "genre": "Philosophy",
+    "author": "Ioanes Rakhmat"
+  },
+  "9": {
+    "title": "Sherlock Holmes Best Of The Best Stories 19 Petualangan Terbaik",
+    "genre": "Detective",
+    "author": "Sir Arthur Conan Doyle"
+  },
+  "22": {
+    "title": "Dunia Sophie",
+    "genre": "Philosophy",
+    "author": "Jostein Gaarder"
+  },
+  "15": {
+    "title": "Memory of Glass - ガラスの記憶",
+    "genre": "Mystery",
+    "author": "Akiyoshi Rikako"
+  },
+  "28": {
+    "title": "The Choice Dialog Islam-Kristen",
+    "genre": "Religion",
+    "author": "Ahmed Deedat"
+  },
+  "34": {
+    "title": "Biografi Angka Nol",
+    "genre": "Non-fiction",
+    "author": "Charles Seife"
+  },
+  "16": {
+    "title": "Meneladani Kepemimpinan Khalifah",
+    "genre": "Religion",
+    "author": "Abdullah Munib El-Basyiry"
+  },
+  "21": {
+    "title": "Your Name. - 君の名は。",
+    "genre": "Fantasy",
+    "author": "Shinkai Makoto"
+  },
+  "3": {
+    "title": "Berfilsafat itu gampang (Mabadi al-Falsafah wa al-Akhlaq)",
+    "genre": "Philosophy",
+    "author": "Dr. Abdul Hamid Mutawalli, Dr. Fu'ad Farid Isma'il"
+  },
+  "14": {
+    "title": "Absolute Justice - 絶対正義",
+    "genre": "Mystery",
+    "author": "Akiyoshi Rikako"
+  },
+  "33": {
+    "title": "Harry Potter dan Batu Bertuah",
+    "genre": "Fantasy",
+    "author": "J. K. Rowling"
+  },
+  "18": {
+    "title": "Logika Agama",
+    "genre": "Philosophy",
+    "author": "M. Quraish Shihab"
+  },
+  "5": {
+    "title": "Sejarah Pemikiran Barat: Dari yang Klasik Sampai yang Modern",
+    "genre": "Philosophy",
+    "author": "Sutarjo Adisusilo JR"
+  },
+  "8": {
+    "title": "Petak Umpet Minako",
+    "genre": "Mystery",
+    "author": "Manhalfgod"
+  },
+  "30": {
+    "title": "Weathering with You - 天気の子",
+    "genre": "Fantasy",
+    "author": "Shinkai Makoto"
+  },
+  "35": {
+    "title": "Tahafut At-Tahafut",
+    "genre": "Philosophy",
+    "author": "Simon Van Den Bergh"
+  },
+  "32": {
+    "title": "The Da Vinci Code",
+    "genre": "Detective",
+    "author": "Dan Brown"
+  },
+  "29": {
+    "title": "Holy Mother - 聖母",
+    "genre": "Mystery",
+    "author": "Akiyoshi Rikako"
+  },
+  "36": {
+    "title": "Apa itu yang dinamakan ILMU?",
+    "genre": "Philosophy",
+    "author": "A. F. Chalmers"
+  },
+  "19": {
+    "title": "Ayat-ayat Semesta",
+    "genre": "Science",
+    "author": "Agus Purwanto"
+  },
+  "31": {
+    "title": "Hyouka - 氷菓 (Series 1)",
+    "genre": "Mystery",
+    "author": "Yonezawa Honobu"
+  },
+  "1": {
+    "title": "The Case Book of Sherlock Holmes",
+    "genre": "Detective",
+    "author": "Sir Arthur Conan Doyle"
+  },
+  "17": {
+    "title": "Sejarah Tuhan",
+    "genre": "Religion",
+    "author": "Karen Armstrong"
+  },
+  "2": {
+    "title": "The Return of Sherlock Holmes",
+    "genre": "Detective",
+    "author": "Sir Arthur Conan Doyle"
+  },
+  "37": {
+    "title": "100 Penemuan Sains Terhebat Sepanjang Masa",
+    "genre": "Science",
+    "author": "Kendall Haven"
+  }
+}
+

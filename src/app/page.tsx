@@ -77,6 +77,9 @@ export default function Home() {
           </div>
         </div>
       </div>
+      <div className="p-2 mt-2 text-xl flex items-start w-full">
+        <p>01101001 01101100 01101000 01100001 01101101</p>
+      </div>
     </div>
   );
 }

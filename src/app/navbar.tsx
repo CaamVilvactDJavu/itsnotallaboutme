@@ -36,7 +36,7 @@ const Navbar = () => {
         </li>
         <li>
           <Link
-            href="/bookshelf"
+            href="/bookshelfs"
             className="hover:underline hover:decoration-dashed"
           >
             <span>Bookshelf</span>
