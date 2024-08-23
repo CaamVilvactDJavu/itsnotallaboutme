@@ -79,7 +79,7 @@ export default function About() {
   ];
 
   return (
-    <main className="mx-auto p-4">
+    <main className="py-4">
       <section className="mb-6">
         <h2>Platfrom Badge</h2>
         <div className="flex flex-col gap-4 justify-center items-center">

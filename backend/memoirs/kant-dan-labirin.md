@@ -1,4 +1,4 @@
-Kant Dan Labirin
+# Kant Dan Labirin
 
 Sun Aug 18 2024 . 2 min read
 

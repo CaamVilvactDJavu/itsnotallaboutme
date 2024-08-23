@@ -1,4 +1,4 @@
-Bicara Untuk Dianggap Tahu
+# Bicara Untuk Dianggap Tahu
 
 Sun Aug 18 2024 . 2 min read
 
