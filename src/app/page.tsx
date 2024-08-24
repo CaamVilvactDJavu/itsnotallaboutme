@@ -30,6 +30,25 @@ export default function Home() {
             <h4 className="text-xs sm:text-sm md:text-base lg:text-lg mt-4">
               https://itsnotallaboutme.shuttleapp.rs/
             </h4>
+            <div className="border border-dashed border-[#1f1f1f] p-2 mt-4 rounded-xl shadow-xl">
+              <div className="grid grid-cols-5 rounded-xl">
+                <div className="bg-[#cccccc] h-10 flex items-center justify-center text-black font-semibold text-sm">
+                  #cccccc
+                </div>
+                <div className="bg-[#e5e7eb] h-10 flex items-center justify-center text-black font-semibold text-sm">
+                  #e5e7eb
+                </div>
+                <div className="bg-[#eae7de] h-10 flex items-center justify-center text-black font-semibold text-sm">
+                  #eae7de
+                </div>
+                <div className="bg-[#9ca3af] h-10 flex items-center justify-center text-black font-semibold text-sm">
+                  #9ca3af
+                </div>
+                <div className="bg-[#1f1f1f] h-10 flex items-center justify-center text-white font-semibold text-sm">
+                  #1f1f1f
+                </div>
+              </div>
+            </div>
           </div>
         </div>
         <div className="flex flex-col md:flex-row items-center justify-center gap-4 mt-8 p-4">
