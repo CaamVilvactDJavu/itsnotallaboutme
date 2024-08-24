@@ -7,7 +7,9 @@ const Navbar = () => {
     <nav className="md:py-8 md:px-2 w-full md:w-auto">
       <div className="md:mb-8 text-left flex md:flex-col items-center md:items-start justify-between p-4 md:p-0">
         <div>
-          <h1 className="text-2xl font-bold">Itsnotallaboutme</h1>
+          <Link href="/">
+            <h1 className="text-2xl font-bold">Itsnotallaboutme</h1>
+          </Link>
           <p className="text-sm">c.a._.a.m</p>
         </div>
         {/* <div className="md:mt-4"> */}

@@ -1,6 +1,7 @@
 import ReactMarkdown from "react-markdown";
 import remarkGfm from "remark-gfm";
 import { memoirs } from "../../../data/memoirsList";
+import Head from "next/head";
 
 async function getMemoirContent(filename: string) {
   // const url = process.env.NEXT_PUBLIC_API_LOCAL;
@@ -38,7 +39,7 @@ export default async function MemoirPage({
 
   return (
     <>
-      <head>
+      <Head>
         <title>{postTitle}</title>
         <meta name="format-detection" content="telephone=no" />
         <meta name="theme-color" content="#0f1e36" />
@@ -53,10 +54,10 @@ export default async function MemoirPage({
         <meta property="og:description" content={postDescription} />
         <meta property="og:title" content={postTitle} />
         <meta property="og:image" content={postImage} />
-      </head>
+      </Head>
       <main className="py-4">
         <h1 className="text-2xl font-bold mb-4">{memoir.title}</h1>
-        <div className="prose prose-md text-md max-w-none space-y-4">
+        <div className="text-justify prose-sm sm:prose-lg md:prose-md xl:prose-lg max-w-none space-y-4">
           <ReactMarkdown remarkPlugins={[remarkGfm]}>
             {memoir.content}
           </ReactMarkdown>

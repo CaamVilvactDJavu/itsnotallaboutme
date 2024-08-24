@@ -81,7 +81,7 @@ export default function About() {
   return (
     <main className="py-4">
       <section className="mb-6">
-        <h2>Platfrom Badge</h2>
+        <h2 className="text-2xl"># Platfrom Badge</h2>
         <div className="flex flex-col gap-4 justify-center items-center">
           <a href="https://app.daily.dev/caamvilvact">
             <Image
@@ -103,7 +103,7 @@ export default function About() {
       </section>
 
       <section className="prose prose-lg">
-        <h2>Programming Languages</h2>
+        <h2 className="text-2xl"># Programming Languages</h2>
         <div className="flex gap-2 mb-6">
           {languages.map((language, index) => (
             <span key={index} className="px-2 py-1">
@@ -114,12 +114,12 @@ export default function About() {
       </section>
 
       <section className="mt-8">
-        <h2>Projects</h2>
+        <h2 className="text-2xl"># Projects</h2>
         <div className="space-y-4">
           {projects.map((project, index) => (
             <div
               key={index}
-              className="shadow-md rounded-lg p-4 hover:shadow-lg transition-shadow"
+              className="rounded-lg p-4 hover:bg-[#1f1f1f] hover:text-[#cccccc]"
             >
               <Link
                 href={project.link || "#"}
@@ -127,11 +127,11 @@ export default function About() {
                 target={project.link ? "_blank" : ""}
                 rel="noopener noreferrer"
               >
-                <h3 className="text-lg mb-2 border-b-2 border-dashed border-[#1f1f1f]">
+                <h1 className="text-lg mb-2 border-b-2 border-dashed border-[#1f1f1f] hover:bg-#1f1f1f">
                   {project.title}
-                </h3>
+                </h1>
               </Link>
-              <p className="text-gray-700 text-sm line-clamp-2 mb-2">
+              <p className="hover:text-[#cccccc] text-sm line-clamp-2">
                 {project.description}
               </p>
               <div className="flex flex-wrap gap-2">

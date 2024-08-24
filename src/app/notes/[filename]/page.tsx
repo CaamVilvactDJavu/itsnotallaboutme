@@ -35,7 +35,7 @@ export default async function NotePage({
   return (
     <main className="py-4">
       <h1 className="text-2xl font-bold mb-4">{note.title}</h1>
-      <div className="prose prose-md text-md max-w-none space-y-4">
+      <div className="text-justify  prose-sm sm:prose-lg md:prose-md xl:prose-lg max-w-none space-y-4">
         <ReactMarkdown
           remarkPlugins={[remarkGfm]}
           components={{

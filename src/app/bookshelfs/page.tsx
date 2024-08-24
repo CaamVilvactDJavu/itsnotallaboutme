@@ -48,7 +48,7 @@ export default function BookshelfPage() {
     <main className="py-4">
       {Object.keys(groupedBooks).map((genre) => (
         <section key={genre}>
-          <h2 className="pt-2">{genre}</h2>
+          <h2 className="text-2xl pt-2"># {genre}</h2>
           <ul className="space-y-2">
             {groupedBooks[genre].map((book, bookIndex) => (
               <li key={bookIndex}>
