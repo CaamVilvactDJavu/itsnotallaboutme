@@ -98,8 +98,19 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="p-2 mt-2 text-xl flex items-start w-full">
-          <p>01101001 01101100 01101000 01100001 01101101</p>
+        <div className="flex flex-col md:flex-row lg:flex-row xl:flex-row items-center justify-center">
+          <div className="p-2 mt-2 text-xl flex items-start w-full">
+            <p>01101001 01101100 01101000 01100001 01101101</p>
+          </div>
+          <div>
+            <Image
+              src="/qrcode.svg"
+              alt="home"
+              width={200}
+              height={200}
+              className="rounded-xl"
+            ></Image>
+          </div>
         </div>
       </div>
     </main>
