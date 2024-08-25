@@ -32,19 +32,19 @@ export default function Home() {
             </h4>
             <div className="border border-dashed border-[#1f1f1f] p-2 mt-4 rounded-xl shadow-xl">
               <div className="grid grid-cols-5 rounded-xl">
-                <div className="bg-[#cccccc] h-10 flex items-center justify-center text-black font-semibold text-sm">
+                <div className="bg-[#cccccc] h-10 flex items-center justify-center text-black font-semibold text-xs">
                   #cccccc
                 </div>
-                <div className="bg-[#e5e7eb] h-10 flex items-center justify-center text-black font-semibold text-sm">
+                <div className="bg-[#e5e7eb] h-10 flex items-center justify-center text-black font-semibold text-xs">
                   #e5e7eb
                 </div>
-                <div className="bg-[#eae7de] h-10 flex items-center justify-center text-black font-semibold text-sm">
+                <div className="bg-[#eae7de] h-10 flex items-center justify-center text-black font-semibold text-xs">
                   #eae7de
                 </div>
-                <div className="bg-[#9ca3af] h-10 flex items-center justify-center text-black font-semibold text-sm">
+                <div className="bg-[#9ca3af] h-10 flex items-center justify-center text-black font-semibold text-xs">
                   #9ca3af
                 </div>
-                <div className="bg-[#1f1f1f] h-10 flex items-center justify-center text-white font-semibold text-sm">
+                <div className="bg-[#1f1f1f] h-10 flex items-center justify-center text-white font-semibold text-xs">
                   #1f1f1f
                 </div>
               </div>

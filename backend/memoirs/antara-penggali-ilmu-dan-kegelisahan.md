@@ -6,8 +6,8 @@ Langkah-langkah nan terasa berat, membawaku pagi ini kesini. Adalah pustaka temp
 
 Suasana senyap, bersama dengan para manusia-manusia penggali ilmu. Kepalanya iya tertunduk, tetapi pikirannya entah kemana jauhnya pergi menjelajah. Terlalu dalam, sampai-sampai dunia luar dirinya tidak lagi dapat di jangkau.
 
-Aku terpukau, mungkin ilmu nan ia gali saat ini, dalam jangka pendek belum ada hasilnya. Akan tetapi, bisa jadi beberapa tahun kedepan baru ada hasilnya.
+Aku terpukau, mungkin ilmu nan ia gali saat ini dalam jangka pendek belum ada hasilnya. Akan tetapi, bisa jadi beberapa tahun kedepan baru ada hasilnya.
 
-Aku nan tetap pada tempat duduk ini mulai gelisah, apa benar nan telah ku lakukan ini dapat bermanfaat bagi yang lain di kemudian hari. Kendatipun aku hanya terus berpikir seperti itu tanpa sebuah aksi, tidak akan merubah apapun. Tetap berupaya dengan cara apapun itu, walaupun semenjak aku kuliah ini tidur tidak lagi teratur.
+Aku nan tetap pada tempat duduk ini mulai gelisah, apa benar nan telah ku lakukan ini dapat bermanfaat bagi yang lain di kemudian hari. Kendatipun aku hanya terus berpikir seperti itu tanpa sebuah aksi, tidak akan merubah apapun. Tetap berupaya dengan cara apapun itu, walaupun semenjak aku kuliah tidur tidak lagi teratur.
 
-Kalau tidak selesai hari ini, hari esok masih ada.
+Kalau pun tidak selesai hari ini, hari esok masih ada.
