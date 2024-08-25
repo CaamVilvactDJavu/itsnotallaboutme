@@ -1,6 +1,6 @@
 # Pinggir Lapangan
 
-Sun Aug 24 2024 . 2 min read
+Sat Aug 24 2024 . 2 min read
 
 Hari ini amat dingin, aku terduduk di tempat duduk penonton basket. Seperti biasa aku hanya berperan sebagai pengamat. Aku mulai bertanya-tanya dalam diri, dalam aku memandang sekarang ini aku berperan sebagai pengamat, ada pula yang berperan sebagai pemain (yang aktif maupun pasif), juga ada yang tidak peduli dengan permainan ini. Dan mungkin ada di luar sana yang bahkan tidak tahu apakah ada permainan basket disini.
 

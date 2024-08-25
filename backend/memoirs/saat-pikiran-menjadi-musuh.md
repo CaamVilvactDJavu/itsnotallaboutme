@@ -1,6 +1,6 @@
 # Saat Pikiran Menjadi Musuh
 
-Sun Aug 24 2024 . 2 min read
+Sat Aug 24 2024 . 2 min read
 
 Sangat merusak, pikiran tidak lagi dapat dikendalikan, begitu pula dengan tubuh. Entah perasaan atau apapun itu telah lama dipendam. Tak tahu harus berbicara kepada siapa. Takut sekali untuk berkata, bahkan untuk menangis pun tak bisa.
 
