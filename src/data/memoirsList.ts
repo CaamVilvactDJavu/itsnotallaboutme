@@ -11,4 +11,5 @@ export const memoirs = [
   "bicara-untuk-dianggap-tahu",
   "renungan-malam",
   "antara-penggali-ilmu-dan-kegelisahan",
+  "terjebak-dalam-penderitaan-pikiran",
 ];

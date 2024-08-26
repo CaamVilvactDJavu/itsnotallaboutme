@@ -211,11 +211,13 @@ pub async fn get_memoir(Path(filename): Path<String>) -> impl IntoResponse {
                 title,
                 content,
             };
+            // Explicitly return 200 OK
             (StatusCode::OK, Json(note)).into_response()
         }
         Err(err) => {
             println!("Error reading file: {:?}", err);
-            (StatusCode::NOT_FOUND, "Note not found").into_response()
+            // Explicitly return 404 Not Found
+            (StatusCode::NOT_FOUND, "Memoir not found").into_response()
         }
     }
 }
