@@ -1,5 +1,4 @@
 use crate::AppState;
-use axum::extract::State;
 use axum::http::header::CACHE_CONTROL;
 use axum::http::StatusCode;
 use axum::response::Json;
@@ -10,13 +9,12 @@ use http::{
     HeaderValue, Method,
 };
 use serde::{Deserialize, Serialize};
-use serde_json::{json, Value};
+use serde_json::Value;
 use std::collections::HashMap;
 use std::fs::{self, File};
 use std::io::Read;
 use std::path::PathBuf;
 use tower_cookies::CookieManagerLayer;
-use tower_cookies::{Cookie, Cookies};
 use tower_http::cors::CorsLayer;
 use tower_http::services::ServeDir;
 
@@ -48,11 +46,6 @@ pub fn api_router(state: AppState) -> Router {
         .route("/notes/:filename", axum::routing::get(get_note))
         .route("/memoirs", axum::routing::get(list_memoirs))
         .route("/memoirs/:filename", axum::routing::get(get_memoir))
-        .route("/visitors", axum::routing::get(get_visitors))
-        .route(
-            "/visitors/increment",
-            axum::routing::post(increment_visitors),
-        )
         .with_state(state)
         .layer(cors)
 }
@@ -80,46 +73,6 @@ pub async fn get_bookshelfs() -> impl IntoResponse {
     println!("books: {:?}", books);
 
     (StatusCode::OK, Json(books)).into_response()
-}
-
-pub async fn get_visitors(State(state): State<AppState>) -> impl IntoResponse {
-    match sqlx::query_scalar::<_, i64>("SELECT count FROM visitors WHERE id = 1")
-        .fetch_one(&state.db)
-        .await
-    {
-        Ok(count) => Json(json!({ "count": count })).into_response(),
-        Err(_) => (
-            StatusCode::INTERNAL_SERVER_ERROR,
-            "Failed to get visitor count",
-        )
-            .into_response(),
-    }
-}
-
-pub async fn increment_visitors(
-    State(state): State<AppState>,
-    cookies: Cookies,
-) -> impl IntoResponse {
-    let visited_cookie = cookies.get("visited");
-
-    if visited_cookie.is_none() {
-        match sqlx::query("UPDATE visitors SET count = count + 1 WHERE id = 1")
-            .execute(&state.db)
-            .await
-        {
-            Ok(_) => {
-                cookies.add(Cookie::new("visited", "true"));
-                StatusCode::OK.into_response()
-            }
-            Err(_) => (
-                StatusCode::INTERNAL_SERVER_ERROR,
-                "Failed to increment visitor count",
-            )
-                .into_response(),
-        }
-    } else {
-        StatusCode::OK.into_response()
-    }
 }
 
 pub async fn list_notes() -> impl IntoResponse {
