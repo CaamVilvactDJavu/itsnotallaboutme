@@ -1,8 +1,10 @@
 use crate::AppState;
 use axum::extract::State;
+use axum::http::header::CACHE_CONTROL;
 use axum::http::StatusCode;
 use axum::response::Json;
-use axum::{extract::Path, response::IntoResponse, Router};
+use axum::response::{IntoResponse, Response};
+use axum::{extract::Path, Router};
 use http::{
     header::{ACCEPT, AUTHORIZATION, ORIGIN},
     HeaderValue, Method,
@@ -175,7 +177,11 @@ pub async fn list_memoirs() -> impl IntoResponse {
         }
     }
 
-    (StatusCode::OK, Json(memoirs_list)).into_response()
+    Response::builder()
+        .status(StatusCode::OK)
+        .header(CACHE_CONTROL, "public, max-age=60")
+        .body(Json(memoirs_list).into_response().into_body())
+        .unwrap()
 }
 
 pub async fn get_note(Path(filename): Path<String>) -> impl IntoResponse {
@@ -211,12 +217,15 @@ pub async fn get_memoir(Path(filename): Path<String>) -> impl IntoResponse {
                 title,
                 content,
             };
-            // Explicitly return 200 OK
-            (StatusCode::OK, Json(note)).into_response()
+
+            Response::builder()
+                .status(StatusCode::OK)
+                .header(CACHE_CONTROL, "public, max-age=60")
+                .body(Json(note).into_response().into_body())
+                .unwrap()
         }
         Err(err) => {
             println!("Error reading file: {:?}", err);
-            // Explicitly return 404 Not Found
             (StatusCode::NOT_FOUND, "Memoir not found").into_response()
         }
     }
