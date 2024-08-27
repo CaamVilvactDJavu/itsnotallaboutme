@@ -82,23 +82,33 @@ export default function About() {
     <main className="py-4">
       <section className="mb-6">
         <h2 className="text-2xl"># Platfrom Badge</h2>
-        <div className="flex flex-col">
-          <a href="https://app.daily.dev/caamvilvact">
-            <Image
-              src="https://www.codewars.com/users/CaamVilvactDJavu/badges/large?theme=light"
-              alt="CodeWars Badge"
-              className="w-300 h-300 mb-4"
-              width={300}
-              height={300}
-            />
-            <Image
-              src="https://api.daily.dev/devcards/v2/vRUs99OBcXAqCpPlgOml4.png?type=default&r=ge5"
-              width={345}
-              height={200}
-              className="w-345 h-200"
-              alt="c.a ._. a.m's Dev Card"
-            />
-          </a>
+        <div className="flex flex-col gap-6">
+          <Image
+            src="https://api.daily.dev/devcards/v2/vRUs99OBcXAqCpPlgOml4.png?type=default&r=ge5"
+            width={345}
+            height={200}
+            className="w-345 h-200"
+            alt="c.a ._. a.m's Dev Card"
+          />
+          <Image
+            src="https://www.codewars.com/users/CaamVilvactDJavu/badges/large?theme=light"
+            alt="CodeWars Badge"
+            className="w-300 h-300"
+            width={300}
+            height={300}
+          />
+          <Image
+            src="https://wakatime.com/share/@ca_am/08eca406-cbc9-4867-a385-3de33f121e8e.svg"
+            alt="Wakatime"
+            width={800}
+            height={800}
+          />
+          <Image
+            src="https://wakatime.com/share/@ca_am/987d9ce5-308b-4c9f-8c8e-23c6323816f9.svg"
+            alt="Wakatime"
+            width={800}
+            height={800}
+          />
         </div>
       </section>
 

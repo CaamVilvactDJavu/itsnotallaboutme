@@ -8,7 +8,7 @@
     "start": "cargo shuttle project new --working-directory ./backend/",
     "lint": "next lint",
     "shuttle-login": "cargo shuttle login --working-directory ./backend/",
-    "deploy": "rm -rf ./backend/static && bun run build && cargo build --manifest-path ./backend/Cargo.toml && cargo shuttle deploy --working-directory ./backend/ --allow-dirty",
+    "deploy": "bun run build && cargo build --manifest-path ./backend/Cargo.toml && cargo shuttle deploy --working-directory ./backend/ --allow-dirty",
     "stop": "cargo shuttle project rm --working-directory ./backend/"
   },
   "dependencies": {
