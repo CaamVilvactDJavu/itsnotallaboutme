@@ -8,7 +8,7 @@ async function getMemoirContent(filename: string) {
   try {
     const response = await fetch(`${url}/api/memoirs/${filename}`, {
       next: { revalidate: 60 },
-      cache: "force-cache",
+      // cache: "force-cache",
     });
     if (!response.ok) {
       throw new Error(`Failed to fetch memoir: ${response.statusText}`);
