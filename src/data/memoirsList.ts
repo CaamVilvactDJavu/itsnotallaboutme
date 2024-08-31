@@ -14,4 +14,5 @@ export const memoirs = [
   "terjebak-dalam-penderitaan-pikiran",
   "terperangkap-dalam-kebosanan",
   "pertanyaan-nan-merenggut-kesadaran",
+  "kesunyian-keingintahuan-dan-keterasingan-diri",
 ];
