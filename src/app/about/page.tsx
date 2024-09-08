@@ -146,9 +146,9 @@ export default function About() {
                 <Image
                   src={project.image}
                   alt={`${project.title} Image`}
-                  width={500}
+                  width={300}
                   height={300}
-                  className="mb-4 border-dashed border-2 border-[#1f1f1f]"
+                  className="w-auto h-auto mb-4 border-dashed border-2 border-[#1f1f1f]"
                 />
               )}
               <Link
