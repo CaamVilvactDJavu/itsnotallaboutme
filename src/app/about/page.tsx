@@ -19,6 +19,14 @@ export default function About() {
 
   const projects = [
     {
+      title: "Dialectic Solver",
+      description:
+        "Dialectic Solver is a repository dedicated to solving challenging coding problems on Codewars. This project aims to solve programming challenges through reasoned analysis, elegant code, and step-by-step refinement of solutions.",
+      languages: [mdiLanguageRust],
+      image: "/dialectic-solver.jpeg",
+    },
+
+    {
       title: "Al-Qur'an CLI",
       description:
         "A command-line interface to interact with the Al-Qur'an using the API from quran.com.",
@@ -128,12 +136,21 @@ export default function About() {
 
       <section className="mt-8">
         <h2 className="text-2xl"># Projects</h2>
-        <div className="space-y-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 gap-6">
           {projects.map((project, index) => (
             <div
               key={index}
               className="rounded-lg p-4 hover:bg-[#1f1f1f] hover:text-[#cccccc]"
             >
+              {project.image && (
+                <Image
+                  src={project.image}
+                  alt={`${project.title} Image`}
+                  width={500}
+                  height={300}
+                  className="mb-4 border-dashed border-2 border-[#1f1f1f]"
+                />
+              )}
               <Link
                 href={project.link || "#"}
                 className="font-bold"
@@ -153,7 +170,7 @@ export default function About() {
                     key={languageIndex}
                     className="mt-2 border-[#1f1f1f] border-dashed border-2 shadow-lg hover:bg-[#1f1f1f] hover:text-[#cccccc]"
                   >
-                    <Icon path={icon} size={1} /> {/* Adjust size as needed */}
+                    <Icon path={icon} size={1} />
                   </span>
                 ))}
               </div>
