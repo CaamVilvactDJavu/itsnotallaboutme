@@ -25,13 +25,6 @@ export default function About() {
       languages: [mdiLanguageRust],
       image: "/dialectic-solver.jpeg",
     },
-
-    {
-      title: "Al-Qur'an CLI",
-      description:
-        "A command-line interface to interact with the Al-Qur'an using the API from quran.com.",
-      languages: [mdiLanguageRust],
-    },
     {
       title: "Memoir",
       description:
