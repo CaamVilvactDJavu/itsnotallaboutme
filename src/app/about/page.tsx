@@ -33,6 +33,13 @@ export default function About() {
       image: "/eudaimonia-files.jpeg",
     },
     {
+      title: "Paradox Quest",
+      description:
+        "Paradox Quest is a project dedicated to solving LeetCode problems, focusing on algorithmic challenges and problem-solving strategies. The goal of this repository is to provide clear, efficient solutions to a variety of LeetCode problems and to help developers improve their coding and problem-solving skills.",
+      languages: [mdiLanguageRust],
+      image: "/paradox-quest.jpeg",
+    },
+    {
       title: "Memoir",
       description:
         "Memoir 'メモワール' is a website where I have space to express my complaints. This site uses Next.js and Sanity.",
