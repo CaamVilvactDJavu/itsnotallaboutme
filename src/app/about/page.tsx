@@ -26,6 +26,13 @@ export default function About() {
       image: "/dialectic-solver.jpeg",
     },
     {
+      title: "Eudaimonia Files",
+      description:
+        "Eudaimonia Files is a simple, efficient, and user-friendly file manager built to provide an intuitive experience for organizing, browsing, and managing files on your system. It focuses on offering essential file operations with a clean and minimalistic interface.",
+      languages: [mdiLanguageRust],
+      image: "/eudaimonia-files.jpeg",
+    },
+    {
       title: "Memoir",
       description:
         "Memoir 'メモワール' is a website where I have space to express my complaints. This site uses Next.js and Sanity.",
