@@ -16,4 +16,5 @@ export const memoirs = [
   "pertanyaan-nan-merenggut-kesadaran",
   "kesunyian-keingintahuan-dan-keterasingan-diri",
   "pergulatan-pencarian",
+  "dari-hening-ke-kebingungan",
 ];
