@@ -44,3 +44,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
+
+
+# Added by cargo
+#
+# already existing elements were commented out
+
+#/target
