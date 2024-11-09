@@ -20,4 +20,5 @@ export const memoirs = [
   "keingintahuan-dan-keterbatasan",
   "menggali-ketidakjelasan",
   "perasaan-terjebak",
+  "mengintip-dunia-luar-di-tengah-keterasingan",
 ];
