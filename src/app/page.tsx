@@ -28,7 +28,7 @@ export default function Home() {
               className="rounded-xl w-full h-auto"
             />
             <h4 className="text-xs sm:text-sm md:text-base lg:text-lg mt-4">
-              https://itsnotallaboutme.shuttleapp.rs/
+              https://itsnotallaboutme-zlwv.shuttle.app/
             </h4>
             <div className="border border-dashed border-[#1f1f1f] p-2 mt-4 rounded-xl shadow-xl">
               <div className="grid grid-cols-5 rounded-xl">

@@ -16,7 +16,7 @@ export default function MemoirPage({
 
   const postTitle = memoir.title || "Memoir";
   const postDescription = memoir.content.slice(0, 150) || "Memoir description";
-  const postUrl = `https://itsnotallaboutme.shuttleapp.rs/memoirs/${filename}`;
+  const postUrl = `https://itsnotallaboutme-zlwv.shuttle.app/memoirs/${filename}`;
   const postImage = "/icon.png";
 
   return (

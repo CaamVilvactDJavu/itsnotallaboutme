@@ -4,3 +4,6 @@
 static/
 Secrets.toml
 Secrets.dev.toml
+/target
+.shuttle*
+Secrets*.toml

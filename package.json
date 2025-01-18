@@ -3,16 +3,16 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "bun run build && concurrently --names \"next, shuttle\" --kill-others \"next dev\" \"cargo shuttle run --working-directory ./backend/ --port 9999\"",
+    "dev": "bun run build && concurrently --names \"next, shuttle\" --kill-others \"next dev\" \"shuttle run --working-directory ./backend/ --port 9999\"",
     "build": "next build && cargo build --manifest-path ./backend/Cargo.toml",
-    "start": "cargo shuttle project new --working-directory ./backend/",
+    "start": "shuttle project new --working-directory ./backend/",
     "lint": "next lint",
-    "shuttle-login": "cargo shuttle login --working-directory ./backend/",
-    "deploy": "bun run build && cargo build --manifest-path ./backend/Cargo.toml && cargo shuttle deploy --working-directory ./backend/ --allow-dirty",
-    "stop": "cargo shuttle project rm --working-directory ./backend/"
+    "shuttle-login": "shuttle login --working-directory ./backend/",
+    "deploy": "bun run build && cargo build --manifest-path ./backend/Cargo.toml && shuttle deploy --working-directory ./backend/ --allow-dirty",
+    "stop": "shuttle project rm --working-directory ./backend/"
   },
   "dependencies": {
-    "@fortawesome/free-brands-svg-icons": "^6.6.0",
+    "@fortawesome/free-brands-svg-icons": "^6.7.2",
     "@fortawesome/react-fontawesome": "^0.2.2",
     "@mdi/js": "^7.4.47",
     "@mdi/react": "^1.6.1",
@@ -21,19 +21,19 @@
     "next": "14.2.5",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-markdown": "^9.0.1",
+    "react-markdown": "^9.0.3",
     "remark-gfm": "^4.0.0",
-    "sharp": "^0.33.4"
+    "sharp": "^0.33.5"
   },
   "devDependencies": {
-    "@types/node": "^20.14.15",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
+    "@types/node": "^20.17.14",
+    "@types/react": "^18.3.18",
+    "@types/react-dom": "^18.3.5",
     "concurrently": "^8.2.2",
-    "eslint": "^8.57.0",
+    "eslint": "^8.57.1",
     "eslint-config-next": "14.2.5",
-    "postcss": "^8.4.41",
-    "tailwindcss": "^3.4.9",
-    "typescript": "^5.5.4"
+    "postcss": "^8.5.1",
+    "tailwindcss": "^3.4.17",
+    "typescript": "^5.7.3"
   }
 }

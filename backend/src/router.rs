@@ -43,9 +43,9 @@ pub fn api_router(state: AppState) -> Router {
     Router::new()
         .route("/bookshelfs", axum::routing::get(get_bookshelfs))
         .route("/notes", axum::routing::get(list_notes))
-        .route("/notes/:filename", axum::routing::get(get_note))
+        .route("/notes/{filename}", axum::routing::get(get_note))
         .route("/memoirs", axum::routing::get(list_memoirs))
-        .route("/memoirs/:filename", axum::routing::get(get_memoir))
+        .route("/memoirs/{filename}", axum::routing::get(get_memoir))
         .with_state(state)
         .layer(cors)
 }
