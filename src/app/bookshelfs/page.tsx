@@ -20,7 +20,7 @@ export default function BookshelfPage() {
         const url = process.env.NEXT_PUBLIC_API_BASE_URL;
         // const url = process.env.NEXT_PUBLIC_API_LOCAL;
 
-        const response = await fetch(`${url}/api/bookshelfs`);
+        const response = await fetch(`${url}/api/bookshelfs`, { mode: "cors" });
 
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);

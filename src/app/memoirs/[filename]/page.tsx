@@ -6,11 +6,15 @@ async function getMemoirContent(filename: string) {
   const url = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   try {
-    const response = await fetch(`${url}/api/memoirs/${filename}`, {
+    const fullUrl = `${url}/api/memoirs/${filename}`;
+    console.log("Fetching memoir content from:", fullUrl);
+
+    const response = await fetch(fullUrl, {
+      mode: "cors",
       next: { revalidate: 60 },
-      // cache: "force-cache",
     });
     if (!response.ok) {
+      console.error(`Response not ok: ${response.statusText}`);
       throw new Error(`Failed to fetch memoir: ${response.statusText}`);
     }
     const memoir = await response.json();

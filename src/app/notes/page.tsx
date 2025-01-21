@@ -18,7 +18,7 @@ export default function NotesPage() {
       const url = process.env.NEXT_PUBLIC_API_BASE_URL;
 
       try {
-        const response = await fetch(`${url}/api/notes`);
+        const response = await fetch(`${url}/api/notes`, { mode: "cors" });
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

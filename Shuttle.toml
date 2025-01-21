@@ -1,0 +1,6 @@
+# Declare files that should be moved to the runtime container
+
+[build]
+assets = [
+    "./backend/memoirs/*, ./backend/bookshelfs/*, ./backend/notes/*, ./backend/static/*",
+]

@@ -4,6 +4,10 @@ version = "0.1.0"
 edition = "2021"
 publish = false
 
+[package.metadata.shuttle]
+include = ["memoirs/**, bookshelfs/**, notes/**, static/*"]
+
+
 [[bin]]
 name = "cli"
 path = "src/cli.rs"
@@ -20,6 +24,7 @@ shuttle-shared-db = { version = "0.51.0", features = ["sqlx"] }
 sqlx = { version = "0.8.3", features = ["sqlite"] }
 serde = { version = "1.0.152", features = ["derive"] }
 shuttle-secrets = "0.42.0"
+shuttle-static-folder = "0.28.0"
 shuttle-runtime = "0.51.0"
 shuttle-axum = "0.51.0"
 time = "0.3.20"
@@ -28,3 +33,5 @@ tokio = "1.26.0"
 shuttle-service = "0.51.0"
 serde_json = "1.0.125"
 tower-cookies = "0.11.0"
+tracing = "0.1.41"
+tracing-subscriber = { version = "0.3.19", features = ["env-filter"] }

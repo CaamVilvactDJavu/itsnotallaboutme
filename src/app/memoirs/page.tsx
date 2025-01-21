@@ -18,7 +18,7 @@ export default function MemoirPage() {
       const url = process.env.NEXT_PUBLIC_API_BASE_URL;
 
       try {
-        const response = await fetch(`${url}/api/memoirs`);
+        const response = await fetch(`${url}/api/memoirs`, { mode: "cors" });
         if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }

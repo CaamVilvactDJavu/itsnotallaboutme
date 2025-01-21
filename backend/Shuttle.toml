@@ -1,0 +1,6 @@
+[deploy]
+include = ["static/**/*"]
+deny_dirty = true
+
+[build]
+assets = ["static/**/*"]

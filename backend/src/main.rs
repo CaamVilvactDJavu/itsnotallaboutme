@@ -1,6 +1,5 @@
 use axum::extract::FromRef;
 use axum_extra::extract::cookie::Key;
-use shuttle_runtime::SecretStore;
 use std::path::PathBuf;
 mod cli;
 mod router;
@@ -19,7 +18,9 @@ impl FromRef<AppState> for Key {
 }
 
 #[shuttle_runtime::main]
-async fn axum(#[shuttle_runtime::Secrets] secrets: SecretStore) -> shuttle_axum::ShuttleAxum {
+async fn axum(
+    #[shuttle_runtime::Secrets] secrets: shuttle_runtime::SecretStore,
+) -> shuttle_axum::ShuttleAxum {
     let domain = secrets
         .get("DOMAIN")
         .expect("You need to set your DOMAIN secret!");

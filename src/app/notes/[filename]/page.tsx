@@ -7,7 +7,9 @@ async function getNoteContent(filename: string) {
   const url = process.env.NEXT_PUBLIC_API_BASE_URL;
 
   try {
-    const response = await fetch(`${url}/api/notes/${filename}`);
+    const response = await fetch(`${url}/api/notes/${filename}`, {
+      mode: "cors",
+    });
 
     if (!response.ok) {
       throw new Error(`Failed to fetch note: ${response.statusText}`);
